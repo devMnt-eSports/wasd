@@ -1,0 +1,11 @@
+#HeaderFrame{
+	width:100%;position:relative;
+	
+}
+	#HeaderFrame h3,
+	#HeaderFrame h4{margin:0;}
+.wasd_div{display:inline-block;}
+.wasd_div img{height:70px;}
+.navGamesDiv{
+	text-align:center;padding:10px 0;}
+.navGame{display:inline-block;padding:0 10px;}

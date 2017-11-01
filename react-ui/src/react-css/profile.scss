@@ -1,0 +1,79 @@
+body {
+  margin: 0;
+  background-color: gray;
+}
+
+#profile-nav {
+  margin: 0;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  background-color: #000;
+  color: #fff;
+}
+
+#profile-nav li {
+  padding: 20px;
+  list-style-type: none;
+}
+
+#profile-back {
+  margin: 0 auto;
+  max-width: 20%;
+  background-color: #000;
+  color: #fff;
+}
+
+.profile-head {
+  text-align: center;
+  background-image: url("https://i.ytimg.com/vi/Wk9eDi5DulE/maxresdefault.jpg");
+  background-position: 100% 30%;
+  border-bottom: 2px solid #000;
+}
+
+.profile-head h1 {
+  margin-top: 0;
+}
+
+.profile-head p {
+  padding-bottom: 20px;
+  margin-bottom: 0;
+}
+
+.flex-view {
+  display: flex;
+}
+
+.left-tab {
+  padding: 10px;
+  width: 15%;
+  height: auto;
+}
+
+.profile-center-view {
+  width: 70%;
+  height: auto;
+}
+
+.profile-center-view h3 {
+  margin: 10px;
+}
+
+.profile-center-view select {
+  margin: 10px;
+}
+
+.filter-flex {
+  display: flex;
+}
+
+.example-article {
+  padding: 10px;
+  border: 2px solid #000;
+}
+
+.social-tab {
+  padding: 10px;
+  max-width: 15%;
+  height: auto;
+}
