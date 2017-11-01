@@ -18,11 +18,11 @@ gulp.task("cleanmacs", () => {
 
 gulp.task("sass", () => {
   return gulp
-    .src("src/**/*.scss")
+    .src("react-ui/src/react-css/*.scss")
     .pipe(sass())
-    .pipe(gulp.dest("src/react-css"));
+    .pipe(gulp.dest("react-ui/src/react-css/react-css"));
 });
 
 gulp.task("watch", () => {
-  gulp.watch("src/**/*.scss", ["sass"]);
+  gulp.watch("react-ui/**/*.scss", ["sass"]);
 });
