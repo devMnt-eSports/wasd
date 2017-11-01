@@ -71,7 +71,7 @@ app.get("/forums", (req, res, next) => {
   const db = app.get("db");
   db
     .getForumPosts()
-    .then(response => res.status(418).json(response))
+    .then(response => res.json(response))
     .catch(error => console.log(`Error: ${error}`));
 });
 
