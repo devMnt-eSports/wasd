@@ -9,7 +9,7 @@ const express = require("express"),
 
 const config = require("./config.json");
 
-const port = 3000;
+const port = 5000;
 
 const dbConnectionString = `postgres://postgres:${config.dbPassword}@wasd.link/postgres`;
 
