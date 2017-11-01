@@ -67,6 +67,14 @@ app.get("/auth/twitch", passport.authenticate("twitch"));
 // 	    res.redirect("/logged");
 // 	});
 
+app.get("/forums", (req, res, next) => {
+  const db = app.get("db");
+  db
+    .getForumPosts()
+    .then(response => res.status(418).json(response))
+    .catch(error => console.log(`Error: ${error}`));
+});
+
 app.get("*", (req, res) => {
   res.sendFile(path.resolve(__dirname, "../react-ui/build", "index.html"));
 });
