@@ -1,13 +1,14 @@
-import React, { Component } from 'react'
+import React, { Component } from "react";
+import "../../react-css/react-css/forum.css";
 
-class ForumsFrame extends Component{
-	render(){
-		return(
-			<div>
-				<h1>Forums Frame</h1>
-			</div>
-		)
-	}
+class ForumsFrame extends Component {
+  render() {
+    return (
+      <div id="forum-splash">
+        <h1>GitRektHub</h1>
+      </div>
+    );
+  }
 }
 
-export default ForumsFrame
+export default ForumsFrame;
