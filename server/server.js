@@ -15,6 +15,8 @@ const dbConnectionString = `postgres://postgres:${config.dbPassword}@wasd.link/p
 
 const app = express();
 
+//app.use("/", express.static(`${__dirname}/src`));
+
 massive(dbConnectionString).then(db => app.set("db", db));
 
 app
@@ -46,6 +48,14 @@ passport.serializeUser(function(user, done) {
 
 passport.deserializeUser(function(user, done) {
   done(null, user);
+});
+
+app.get("/api/test", (req, res, next) => {
+  const db = app.get("db");
+  db
+    .getAllUsers()
+    .then(response => res.status(200).json(response))
+    .catch(error => res.status(420).json(error));
 });
 
 app.get("/auth/twitch", passport.authenticate("twitch"));
