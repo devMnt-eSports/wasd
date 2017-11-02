@@ -30,6 +30,7 @@
     "massive": "^4.4.0",
     "passport": "^0.4.0",
     "passport-steam": "^1.0.8",
-    "passport-twitch": "^1.0.3"
+    "passport-twitch": "^1.0.3",
+    "path": "^0.12.7"
   }
 }

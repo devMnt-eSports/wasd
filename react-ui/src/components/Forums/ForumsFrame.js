@@ -57,6 +57,9 @@ class ForumsFrame extends Component {
         <div id="forum-splash">
           <h1>GitRektHub</h1>
         </div>
+        <a href="http://localhost:5000/auth/twitch">
+          <p>Login / Sign Up!</p>
+        </a>
         <div>
           <h1>Write a Post...</h1>
         </div>
