@@ -24,7 +24,7 @@ class HeaderFrame extends Component{
 
 				<div className="navGamesDiv">
 					<div className="navGame">
-						<h3>PLAYERUNKNOWN'S BATTLEGROUNDS</h3>
+						<h3>PLAYERUNKNOWN{`'`}S BATTLEGROUNDS</h3>
 					</div>
 					<div className="navGame">
 						<h3>LEAGUE OF LEGENDS</h3>
@@ -48,4 +48,4 @@ class HeaderFrame extends Component{
 	}
 }
 
-export default HeaderFrame
+export default HeaderFrame;
