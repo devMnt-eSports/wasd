@@ -20,25 +20,36 @@ class HomeFrame extends Component{
 			this.setState({
 				news:re
 			})
-		})
-
-	
+		})	
 	}
 
 	render(){
 		return(
-			<div>
+			<div id="HomeFrame">
+
 				<h1>Home Frame</h1>
-				<h2>Today In Gaming:</h2>
-				
-				{
-					this.state.news.articles.map( (x)=>{
-						return <div>
-							<h3>{x.title} - {x.author}</h3>
-							<img src={x.urlToImage} alt={'img'}/>
-						</div>
-					})
-				}				
+
+				<div id="gamingNews">
+					<h2>Today In Gaming:</h2>
+					{
+						this.state.news.articles.map( (article)=>{
+							return <div>
+								<h4>{article.title} - {article.author}</h4>
+								<img src={article.urlToImage} alt={'img'}/>
+							</div>
+						})
+					}
+				</div>
+
+				<div id="socialMediaSection">
+					<div id="tweets">
+						section for tweets
+					</div>
+
+					<div id="twitch">
+						section for twitch
+					</div>
+				</div>
 
 			</div>
 		)

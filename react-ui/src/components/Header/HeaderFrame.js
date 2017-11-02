@@ -17,6 +17,11 @@ class HeaderFrame extends Component{
 					<Router><Link to={'/'}><img src={wasdlogo} alt={'wasd logo'} /></Link></Router>
 				</div>
 
+				<div className="headerLogin">
+					<h4>Login</h4>
+					<p>resigter/sign-up</p>
+				</div>
+
 				<div className="navGamesDiv">
 					<div className="navGame">
 						<h3>PLAYERUNKNOWN'S BATTLEGROUNDS</h3>
@@ -31,13 +36,13 @@ class HeaderFrame extends Component{
 
 				{/*
 				<NavBarFrame />
-			*/}
-
-				<ul>
-					<li><Router><Link to={'/profile'}>My Profile</Link></Router></li>
-					<li><Router><Link to={'/forums'}>Forums</Link></Router></li>
-				</ul>
-
+				*/}
+				<Router>
+					<ul>
+						<li><Link to={'/profile'}>My Profile</Link></li>
+						<li><Link to={'/forums'}>Forums</Link></li>
+					</ul>
+				</Router>
 			</div>
 		)
 	}
