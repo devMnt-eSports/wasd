@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { fire as firebase } from "../../fire";
 import "../../react-css/react-css/forum.css";
 
 import axios from "axios";
@@ -55,6 +56,12 @@ class ForumsFrame extends Component {
       <div>
         <div id="forum-splash">
           <h1>GitRektHub</h1>
+        </div>
+        <a href="http://localhost:5000/auth/twitch">
+          <p>Login / Sign Up!</p>
+        </a>
+        <div>
+          <h1>Write a Post...</h1>
         </div>
         <div className="center-forum">{forumPost}</div>
       </div>

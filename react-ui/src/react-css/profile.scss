@@ -24,6 +24,11 @@ body {
   color: #fff;
 }
 
+#profile-resizer {
+  max-height: 150px;
+  max-width: auto;
+}
+
 .profile-head {
   text-align: center;
   background-image: url("https://i.ytimg.com/vi/Wk9eDi5DulE/maxresdefault.jpg");

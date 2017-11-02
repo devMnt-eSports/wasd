@@ -5,7 +5,8 @@ const express = require("express"),
   passport = require("passport"),
   twitchStrategy = require("passport-twitch").Strategy,
   cors = require("cors"),
-  massive = require("massive");
+  massive = require("massive"),
+  path = require("path");
 
 const config = require("./config.json");
 
@@ -32,7 +33,7 @@ passport.use(
     {
       clientID: config.clientID,
       clientSecret: config.clientSecret,
-      callbackURL: "http://localhost:3000/logged",
+      callbackURL: "http://localhost:5000/logged",
       scope: "user_read"
     },
     function(accessToken, refreshToken, profile, done) {
@@ -60,12 +61,16 @@ app.get("/api/test", (req, res, next) => {
 
 app.get("/auth/twitch", passport.authenticate("twitch"));
 
-// app.get("/logged",
-// 	passport.authenticate("twitch", {failureRedirect:"/"}),
-// 	function(req, res) {
-// 	    console.log(req.user);
-// 	    res.redirect("/logged");
-// 	});
+app.get(
+  "/logged",
+  passport.authenticate("twitch", {
+    failureRedirect: "localhost:3000/"
+  }),
+  function(req, res) {
+    console.log(req.user);
+    res.redirect("https://localhost:3000/");
+  }
+);
 
 app.get("/forums", (req, res, next) => {
   const db = app.get("db");
