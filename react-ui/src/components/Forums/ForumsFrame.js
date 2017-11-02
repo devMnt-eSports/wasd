@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { fire as firebase } from "../../fire";
 import "../../react-css/react-css/forum.css";
 
 import axios from "axios";
@@ -8,8 +9,44 @@ class ForumsFrame extends Component {
     super(props);
 
     this.state = {
-      posts: []
+      posts: [],
+      file: "",
+      imagePreviewUrl: ""
     };
+  }
+
+  submitImageUpload(event) {
+    event.preventDefault();
+
+    let reader = new FileReader();
+    let file = event.target.files[0];
+    reader.onloadend = () => {
+      this.setState({
+        file: file,
+        imagePreviewUrl: reader.result
+      });
+    };
+    reader.readAsDataURL(file);
+  }
+
+  uploadImage(event) {
+    event.preventDefault();
+    let file = this.state.file;
+    const storageRef = firebase.storage().ref();
+    const uploadTask = storageRef
+      .child("profilePictures/" + file.name)
+      .put(file);
+    uploadTask.on(
+      "state_changed",
+      snapshot => {
+        console.log(snapshot);
+      },
+      function(error) {},
+      function() {
+        let downloadURL = [uploadTask.snapshot.downloadURL];
+        console.log(downloadURL);
+      }
+    );
   }
 
   componentDidMount() {
