@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { HashRouter as Router, Route, Switch } from "react-router-dom";
-// import "./react-css/react-css/main.css";
+import "./App.css";
 
 import HeaderFrame from "./components/Header/HeaderFrame";
 import HomeFrame from "./components/Home/HomeFrame";

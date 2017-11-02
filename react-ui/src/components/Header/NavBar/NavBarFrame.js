@@ -1,6 +1,5 @@
 import React, { Component } from 'react'
-import { HashRouter as Router, Route, Switch } from 'react-router-dom'
-import { Link } from 'react-router-dom'
+
 
 // import ProfileFrame from '../../Profile/ProfileFrame'
 
