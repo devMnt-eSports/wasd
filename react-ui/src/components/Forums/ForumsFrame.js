@@ -9,44 +9,8 @@ class ForumsFrame extends Component {
     super(props);
 
     this.state = {
-      posts: [],
-      file: "",
-      imagePreviewUrl: ""
+      posts: []
     };
-  }
-
-  submitImageUpload(event) {
-    event.preventDefault();
-
-    let reader = new FileReader();
-    let file = event.target.files[0];
-    reader.onloadend = () => {
-      this.setState({
-        file: file,
-        imagePreviewUrl: reader.result
-      });
-    };
-    reader.readAsDataURL(file);
-  }
-
-  uploadImage(event) {
-    event.preventDefault();
-    let file = this.state.file;
-    const storageRef = firebase.storage().ref();
-    const uploadTask = storageRef
-      .child("profilePictures/" + file.name)
-      .put(file);
-    uploadTask.on(
-      "state_changed",
-      snapshot => {
-        console.log(snapshot);
-      },
-      function(error) {},
-      function() {
-        let downloadURL = [uploadTask.snapshot.downloadURL];
-        console.log(downloadURL);
-      }
-    );
   }
 
   componentDidMount() {
@@ -92,6 +56,9 @@ class ForumsFrame extends Component {
       <div>
         <div id="forum-splash">
           <h1>GitRektHub</h1>
+        </div>
+        <div>
+          <h1>Write a Post...</h1>
         </div>
         <div className="center-forum">{forumPost}</div>
       </div>
