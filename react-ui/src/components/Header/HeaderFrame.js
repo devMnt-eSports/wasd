@@ -1,8 +1,8 @@
 import React, { Component } from 'react'
-import { HashRouter as Router, Route, Switch } from 'react-router-dom'
+import { HashRouter as Router } from 'react-router-dom'
 import { Link } from 'react-router-dom'
 
-import NavBarFrame from '../../components/Header/NavBar/NavBarFrame';
+// import NavBarFrame from '../../components/Header/NavBar/NavBarFrame';
 
 import '../../styles/Header/HeaderFrame.css';
 
@@ -15,6 +15,11 @@ class HeaderFrame extends Component{
 			<div id="HeaderFrame">
 				<div className="wasd_div">
 					<Router><Link to={'/'}><img src={wasdlogo} alt={'wasd logo'} /></Link></Router>
+				</div>
+
+				<div className="headerLogin">
+					<h4>Login</h4>
+					<p>resigter/sign-up</p>
 				</div>
 
 				<div className="navGamesDiv">
@@ -31,13 +36,13 @@ class HeaderFrame extends Component{
 
 				{/*
 				<NavBarFrame />
-			*/}
-
-				<ul>
-					<li><Router><Link to={'/profile'}>My Profile</Link></Router></li>
-					<li><Router><Link to={'/forums'}>Forums</Link></Router></li>
-				</ul>
-
+				*/}
+				<Router>
+					<ul>
+						<li><Link to={'/profile'}>My Profile</Link></li>
+						<li><Link to={'/forums'}>Forums</Link></li>
+					</ul>
+				</Router>
 			</div>
 		)
 	}
