@@ -33,12 +33,27 @@ passport.use(
     {
       clientID: config.clientID,
       clientSecret: config.clientSecret,
-      callbackURL: "http://localhost:5000/logged",
+      callbackURL: "http://localhost:5000/logged/twitch",
       scope: "user_read"
     },
     function(accessToken, refreshToken, profile, done) {
       console.log(profile);
-      return done();
+      const db = app.get("db");
+      db.getUserByAuthId([profile.id]).then((user, err) => {
+        console.log(`INITIAL: ${user}`);
+        if (!user[0]) {
+          console.log(`CREATING USER`);
+          db
+            .createUserByAuth([profile.displayName, profile.id])
+            .then((user, err) => {
+              console.log(`USER CREATED: ${JSON.stringify(user[0])}`);
+              return done(err, user[0]);
+            });
+        } else {
+          console.log(`FOUND USER: ${user[0]}`);
+          return done(err, user[0]);
+        }
+      });
     }
   )
 );
@@ -51,24 +66,16 @@ passport.deserializeUser(function(user, done) {
   done(null, user);
 });
 
-app.get("/api/test", (req, res, next) => {
-  const db = app.get("db");
-  db
-    .getAllUsers()
-    .then(response => res.status(200).json(response))
-    .catch(error => res.status(420).json(error));
-});
-
 app.get("/auth/twitch", passport.authenticate("twitch"));
 
 app.get(
-  "/logged",
+  "/logged/twitch",
   passport.authenticate("twitch", {
     failureRedirect: "localhost:3000/"
   }),
   function(req, res) {
     console.log(req.user);
-    res.redirect("https://localhost:3000/");
+    res.redirect("http://localhost:3000/");
   }
 );
 

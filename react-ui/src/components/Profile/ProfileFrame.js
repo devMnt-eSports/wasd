@@ -5,11 +5,17 @@ import "../../react-css/react-css/profile.css";
 
 class ProfileFrame extends Component {
   constructor(props) {
+    console.log(`PROPS: ${props}`);
     super(props);
 
     this.state = {
       file: "",
-      imagePreviewUrl: ""
+      imagePreviewUrl: "",
+      user: {
+        name: "",
+        id: 0,
+        user_profile_pic: ""
+      }
     };
   }
 
