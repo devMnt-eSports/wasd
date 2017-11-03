@@ -3,6 +3,7 @@ import { HashRouter as Router, Route, Switch, Link } from "react-router-dom"
 
 import GamingNews from './GamingNews/GamingNews'
 import EsportEvents from './EsportEvents/EsportEvents'
+import TestComponent from './TestComponent'
 
 import '../../styles/Home/HomeFrame.css'
 
@@ -12,6 +13,8 @@ class HomeFrame extends Component{
 	render(){
 		return(
 			<div id="HomeFrame">
+
+				<TestComponent />
 
 				<EsportEvents/>				
 

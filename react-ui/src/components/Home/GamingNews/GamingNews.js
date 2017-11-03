@@ -1,5 +1,7 @@
 import React, { Component } from 'react'
 
+import '../../../styles/Home/GamingNews/GamingNews.css'
+
 const gamingUrl = 'https://newsapi.org/v1/articles?source=polygon&sortBy=top&apiKey=2107a41c7d9549d497b83f34f6f8aa6b';
 
 class GamingNews extends Component{
@@ -29,7 +31,7 @@ class GamingNews extends Component{
 					this.state.news.articles.map( (article, i)=>{
 						return <div key={i}>
 							<h4>{article.title} - {article.author}</h4>
-							<img src={article.urlToImage} alt={'img'}/>
+							<img src={article.urlToImage} alt={'img'} className="gamingNewsImage" />
 						</div>
 					})
 				}
