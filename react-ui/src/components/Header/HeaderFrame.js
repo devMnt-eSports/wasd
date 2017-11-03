@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
-import { HashRouter as Router } from 'react-router-dom'
-import { Link } from 'react-router-dom'
+import { HashRouter as Router, Link } from 'react-router-dom'
+
 
 // import NavBarFrame from '../../components/Header/NavBar/NavBarFrame';
 
@@ -22,6 +22,7 @@ class HeaderFrame extends Component{
 					<p>resigter/sign-up</p>
 				</div>
 
+				{/*
 				<div className="navGamesDiv">
 					<div className="navGame">
 						<h3>PLAYERUNKNOWN{`'`}S BATTLEGROUNDS</h3>
@@ -34,7 +35,7 @@ class HeaderFrame extends Component{
 					</div>
 				</div>
 
-				{/*
+
 				<NavBarFrame />
 				*/}
 				<Router>

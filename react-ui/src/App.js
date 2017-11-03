@@ -1,6 +1,6 @@
-import React, { Component } from "react";
-import { HashRouter as Router, Route, Switch } from "react-router-dom";
-import "./App.css";
+import React, { Component } from "react"
+import { HashRouter as Router, Route, Switch } from "react-router-dom"
+import "./App.css"
 
 import HeaderFrame from "./components/Header/HeaderFrame";
 import HomeFrame from "./components/Home/HomeFrame";
@@ -11,10 +11,14 @@ class App extends Component {
   render() {
     return (
       <div className="App">
+        the constant
         <HeaderFrame />
         <Router>
           <Switch>
-            <Route exact path="/" component={HomeFrame} />
+            <Route exact path="/" render={ () => (
+              <HomeFrame>
+              </HomeFrame>
+            )} />
             <Route path="/forums" component={ForumsFrame} />
             <Route path="/profile" component={ProfileFrame} />
           </Switch>
