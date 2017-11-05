@@ -5,20 +5,14 @@ import LolEvents from './LolEvents'
 import OwEvents from './OwEvents'
 
 class EventsView extends Component{
+	
 	render(){
 		return(
-			<div>
-				<Router>
-					<Switch>
-						<Route exact path="/" component={LolEvents} />
-						<Route path="/" component={OwEvents} />
-					</Switch>
-				</Router>
-
-				{/*
-				<LolEvents />
-				<OwEvents />
-				*/}
+			<div id="EventsView">
+				
+				{/* <LolEvents /> */}
+				{/* <OwEvents /> */}
+				
 			</div>
 		)
 	}
