@@ -10,8 +10,8 @@ class EventsView extends Component{
 		return(
 			<div id="EventsView">
 				
-				<LolEvents />
-				<OwEvents />
+				{/* <LolEvents /> */}
+				{/* <OwEvents /> */}
 				
 			</div>
 		)
