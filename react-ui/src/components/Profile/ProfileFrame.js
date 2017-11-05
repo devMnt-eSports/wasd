@@ -5,7 +5,6 @@ import "../../react-css/react-css/profile.css";
 
 class ProfileFrame extends Component {
   constructor(props) {
-    console.log(`PROPS: ${props}`);
     super(props);
 
     this.state = {
@@ -59,12 +58,12 @@ class ProfileFrame extends Component {
         <div id="profile-back">
           <h1>My Profile</h1>
           <h3>
-            Welcome, <b>currentUser</b>!
+            Welcome, <b>{this.state.user.name || "currentUser"}</b>!
           </h3>
           <img
             id="profile-resizer"
-            src={this.state.imagePreviewUrl || this.state.user_profile_pic}
-            alt={this.state.name}
+            src={this.state.user.user_profile_pic || this.state.imagePreviewUrl}
+            alt={this.state.user.name}
           />
           <form onSubmit={event => this.uploadImage(event)}>
             <input

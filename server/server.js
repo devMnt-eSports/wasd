@@ -1,18 +1,14 @@
 const express = require("express"),
-
-      bodyParser = require("body-parser"),
-      cookieParser = require("cookie-parser"),
-      cookieSession = require("cookie-session"),
-      passport = require("passport"),
-      TwitchStrategy = require("passport-twitch").Strategy,
-      SteamStrategy = require("passport-steam").Strategy,
-      cors = require("cors"),
-      massive = require("massive"),
-      path = require('path'),
-      session = require('express-session');
-      
-
-
+  bodyParser = require("body-parser"),
+  cookieParser = require("cookie-parser"),
+  cookieSession = require("cookie-session"),
+  passport = require("passport"),
+  TwitchStrategy = require("passport-twitch").Strategy,
+  SteamStrategy = require("passport-steam").Strategy,
+  cors = require("cors"),
+  massive = require("massive"),
+  path = require("path"),
+  session = require("express-session");
 
 const config = require("./config.json");
 
@@ -29,21 +25,23 @@ massive(dbConnectionString).then(db => app.set("db", db));
 app
   .use(cors())
   .use(bodyParser.urlencoded({ extended: true }))
-  .use(cookieParser())
- // .use(cookieSession({ secret: "keep this string a secret!" }))
-app.use(session({
-    secret: 'some long string should go here.',
+  .use(cookieParser());
+// .use(cookieSession({ secret: "keep this string a secret!" }))
+app.use(
+  session({
+    secret: "some long string should go here.",
     resave: false,
     saveUninitialized: false
-}));
+  })
+);
 
-app.use(passport.initialize())
+app.use(passport.initialize());
 app.use(passport.session());
 
 //.use(express.static("../react-ui/build"));
 
 passport.use(
-    new TwitchStrategy(
+  new TwitchStrategy(
     {
       clientID: config.clientID,
       clientSecret: config.clientSecret,
@@ -51,7 +49,6 @@ passport.use(
       scope: "user_read"
     },
     function(accessToken, refreshToken, profile, done) {
-
       console.log(profile);
       const db = app.get("db");
       db.getUserByAuthId([profile.id]).then((user, err) => {
@@ -72,16 +69,19 @@ passport.use(
     }
   )
 );
-passport.use(new SteamStrategy({
-    returnURL: 'http://localhost:5000/logged/steam',
-    realm: 'http://localhost:5000/logged/steam',
-    apiKey: config.steamKey
-}, function(identifier, profile, done){
-    //console.log(profile);
-})
-	    );
+passport.use(
+  new SteamStrategy(
+    {
+      returnURL: "http://localhost:5000/logged/steam",
+      realm: "http://localhost:5000/logged/steam",
+      apiKey: config.steamKey
+    },
+    function(identifier, profile, done) {
+      //console.log(profile);
+    }
+  )
+);
 
-			       
 passport.serializeUser(function(user, done) {
   done(null, user);
 });
@@ -94,26 +94,30 @@ app.get("/auth/twitch", passport.authenticate("twitch"));
 
 app.get("/auth/steam", passport.authenticate("steam"));
 
-app.get("/logged/twitch",
-	passport.authenticate("twitch", {failureRedirect:"/failure"}),
-	function(req, res){
-	    console.log(req.user);
-	    console.log("redirecting to frontend");
-	    res.redirect("http://localhost:3000/");
-	});
+app.get(
+  "/logged/twitch",
+  passport.authenticate("twitch", { failureRedirect: "/failure" }),
+  function(req, res) {
+    console.log(req.user);
+    console.log(`Redirecting to "/"`);
+    res.redirect("http://localhost:3000/");
+  }
+);
 
-app.get("/logged/steam",
- 	passport.authenticate("steam", {failureRedirect:"/failure"}),
- 	function(req, res) {
- 	    console.log(req.user);
-	    console.log("redirecting to frontend");
- 	    res.redirect("http://localhost:3000/");
- 	});
+app.get(
+  "/logged/steam",
+  passport.authenticate("steam", { failureRedirect: "/failure" }),
+  function(req, res) {
+    console.log(req.user);
+    console.log("redirecting to frontend");
+    res.redirect("http://localhost:3000/");
+  }
+);
 
 app.get("/failure", (req, res, next) => {
-    res.send("fail!")
+  res.send("fail!");
 });
-	
+
 app.get("/forums", (req, res, next) => {
   const db = app.get("db");
   db
