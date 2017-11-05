@@ -1,6 +1,8 @@
 import React, { Component } from "react";
 import { fire as firebase } from "../../fire";
 
+import axios from "axios";
+
 import "../../react-css/react-css/profile.css";
 
 class ProfileFrame extends Component {
@@ -50,6 +52,15 @@ class ProfileFrame extends Component {
         console.log(downloadURL);
       }
     );
+  }
+
+  componentDidMount() {
+    return axios.get(`/profile`).then(results => {
+      console.log(results.data);
+      this.setState({
+        user: results.data
+      });
+    });
   }
 
   render() {
