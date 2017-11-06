@@ -25,6 +25,7 @@ massive(dbConnectionString).then(db => app.set("db", db));
 app
   .use(cors())
   .use(bodyParser.urlencoded({ extended: true }))
+  .use(bodyParser.json())
   .use(cookieParser());
 // .use(cookieSession({ secret: "keep this string a secret!" }))
 app.use(
@@ -131,6 +132,14 @@ app.get("/profile", (req, res, next) => {
   db
     .getCurrentUser([req.user.id])
     .then(response => res.json(response[0]))
+    .catch(error => console.log(`Error: ${error}`));
+});
+
+app.post("/profile/picture", (req, res, next) => {
+  const db = app.get("db");
+  db
+    .postProfilePic([req.body.url, req.user.id])
+    .then(response => res.json(response))
     .catch(error => console.log(`Error: ${error}`));
 });
 

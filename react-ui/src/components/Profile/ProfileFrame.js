@@ -16,8 +16,10 @@ class ProfileFrame extends Component {
         name: "",
         id: 0,
         user_profile_pic: ""
-      }
+      },
+      profilePic: ""
     };
+    this.uploadImage = this.uploadImage.bind(this);
   }
 
   submitImageUpload(event) {
@@ -35,6 +37,7 @@ class ProfileFrame extends Component {
   }
 
   uploadImage(event) {
+    let that = this;
     event.preventDefault();
     let file = this.state.file;
     const storageRef = firebase.storage().ref();
@@ -48,8 +51,13 @@ class ProfileFrame extends Component {
       },
       function(error) {},
       function() {
-        let downloadURL = [uploadTask.snapshot.downloadURL];
-        console.log(downloadURL);
+        let downloadURL = uploadTask.snapshot.downloadURL;
+        let userId = that.state.user.id;
+        that.setState({ profilePic: downloadURL });
+        // console.log(downloadURL);
+        // console.log(userId);
+        console.log(that.state);
+        return axios.post(`/profile/picture`, { url: downloadURL, id: userId });
       }
     );
   }
@@ -73,7 +81,11 @@ class ProfileFrame extends Component {
           </h3>
           <img
             id="profile-resizer"
-            src={this.state.user.user_profile_pic || this.state.imagePreviewUrl}
+            src={
+              this.state.user.user_profile_pic ||
+              this.state.imagePreviewUrl ||
+              "https://vignette.wikia.nocookie.net/jamesbond/images/6/61/Generic_Placeholder_-_Profile.jpg/revision/latest?cb=20121227201208"
+            }
             alt={this.state.user.name}
           />
           <form onSubmit={event => this.uploadImage(event)}>
