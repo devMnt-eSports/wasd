@@ -78,7 +78,23 @@ passport.use(
       apiKey: config.steamKey
     },
     function(identifier, profile, done) {
-      //console.log(profile);
+      console.log(profile);
+      const db = app.get("db");
+      db.getUserByAuthId([profile.id]).then((user, err) => {
+        console.log(`INITIAL: ${user}`);
+        if (!user[0]) {
+          console.log(`CREATING USER`);
+          db
+            .createUserByAuth([profile.displayName, profile.id])
+            .then((user, err) => {
+              console.log(`USER CREATED: ${JSON.stringify(user[0])}`);
+              return done(err, user[0]);
+            });
+        } else {
+          console.log(`FOUND USER: ${user[0]}`);
+          return done(err, user[0]);
+        }
+      });
     }
   )
 );
@@ -121,10 +137,38 @@ app.get("/failure", (req, res, next) => {
 
 app.get("/forums", (req, res, next) => {
   const db = app.get("db");
+  let posts = [];
+  let user = {};
   db
     .getForumPosts()
-    .then(response => res.json(response))
-    .catch(error => console.log(`Error: ${error}`));
+    .then(response => {
+      posts = response;
+    })
+    .catch(error => console.log(`Forums Error: ${error}`));
+  db
+    .getCurrentUser([req.user.id])
+    .then(response => {
+      user = response[0];
+      res.send({ posts, user });
+    })
+    .catch(error => console.log(`Forums User Error: ${error}`));
+});
+
+app.post("/forums/post", (req, res, next) => {
+  console.log(req.body);
+  const db = app.get("db");
+  db
+    .postForumPost([
+      req.body.user,
+      req.body.content,
+      req.body.title,
+      req.body.user_profile_pic
+    ])
+    .then(response => {
+      console.log(response);
+      res.json(response);
+    })
+    .catch(error => console.log(`Post Error: ${error}`));
 });
 
 app.get("/profile", (req, res, next) => {

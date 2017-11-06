@@ -11,8 +11,18 @@ class ForumsFrame extends Component {
     this.state = {
       posts: [],
       file: "",
-      imagePreviewUrl: ""
+      imagePreviewUrl: "",
+      user: {
+        name: "",
+        id: 0,
+        user_profile_pic: ""
+      },
+      content: "",
+      title: ""
     };
+    this.uploadImage = this.uploadImage.bind(this);
+    this.handleTitleChange = this.handleTitleChange.bind(this);
+    this.handleContentChange = this.handleContentChange.bind(this);
   }
 
   submitImageUpload(event) {
@@ -47,10 +57,35 @@ class ForumsFrame extends Component {
     );
   }
 
+  postToForum(event) {
+    event.preventDefault();
+    return axios
+      .post(`/forums/post`, {
+        user: this.state.user.name,
+        content: this.state.content,
+        title: this.state.title,
+        user_profile_pic: this.state.user.user_profile_pic
+      })
+      .then(response => {
+        this.setState({ posts: response.data });
+        console.log(this.state);
+      });
+  }
+
+  handleTitleChange(event) {
+    console.log(this.state.title);
+    this.setState({ title: event.target.value });
+  }
+
+  handleContentChange(event) {
+    this.setState({ content: event.target.value });
+  }
+
   componentDidMount() {
     return axios.get("/forums").then(response => {
       this.setState({
-        posts: response.data
+        posts: response.data.posts,
+        user: response.data.user
       });
       console.log(this.state);
     });
@@ -61,15 +96,22 @@ class ForumsFrame extends Component {
     if (this.state.posts) {
       let postsArr = this.state.posts;
 
-      forumPost = postsArr.map((e, i) => {
+      forumPost = postsArr.reverse().map((e, i) => {
         return (
           <div className="example-post" key={i}>
             <div className="flex-post">
               <h1> {e.title} </h1>
+              <img
+                id="profile-resizer"
+                src={
+                  e.user_profile_pic ||
+                  "https://vignette.wikia.nocookie.net/jamesbond/images/6/61/Generic_Placeholder_-_Profile.jpg/revision/latest?cb=20121227201208"
+                }
+              />
             </div>
             <div>
               <p>
-                posted by <b>{e.user}</b>
+                posted by <b>{e.user_name}</b>
               </p>
               <p>{e.content}</p>
               <input
@@ -92,13 +134,29 @@ class ForumsFrame extends Component {
           <h1>GitRektHub</h1>
         </div>
         <a href="http://localhost:5000/auth/twitch">
-          <p>Login / Sign Up!</p>
+          <p>Twitch Login</p>
+        </a>
+        <a href="http://localhost:5000/auth/steam">
+          <p>Steam Login</p>
         </a>
         <div>
           <div className="center-forum">
             <div className="example-post">
-              <h1>Write a Post...</h1>
-              <input type="text" placeholder="Title your post..." />
+              <div className="flex-post">
+                <h1>Write a Post...</h1>
+                <img
+                  id="profile-resizer"
+                  src={
+                    this.state.user.user_profile_pic ||
+                    "https://vignette.wikia.nocookie.net/jamesbond/images/6/61/Generic_Placeholder_-_Profile.jpg/revision/latest?cb=20121227201208"
+                  }
+                />
+              </div>
+              <input
+                type="text"
+                placeholder="Title your post..."
+                onChange={e => this.handleTitleChange(e)}
+              />
               <img
                 id="profile-resizer"
                 src={this.state.imagePreviewUrl}
@@ -113,10 +171,17 @@ class ForumsFrame extends Component {
                   type="submit"
                   onClick={event => this.uploadImage(event)}
                 >
-                  Upload Image
+                  Upload Image/Video
                 </button>
               </form>
-              <input type="text" placeholder="Write your post..." />
+              <input
+                type="text"
+                placeholder="Write your post..."
+                onChange={e => this.handleContentChange(e)}
+              />
+              <button type="submit" onClick={event => this.postToForum(event)}>
+                Submit My Post!
+              </button>
             </div>
           </div>
         </div>
