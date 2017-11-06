@@ -126,6 +126,14 @@ app.get("/forums", (req, res, next) => {
     .catch(error => console.log(`Error: ${error}`));
 });
 
+app.get("/profile", (req, res, next) => {
+  const db = app.get("db");
+  db
+    .getCurrentUser([req.user.id])
+    .then(response => res.json(response[0]))
+    .catch(error => console.log(`Error: ${error}`));
+});
+
 //app.get("*", (req, res) => {
 //  res.sendFile(path.resolve(__dirname, "../react-ui/build", "index.html"));
 //});
