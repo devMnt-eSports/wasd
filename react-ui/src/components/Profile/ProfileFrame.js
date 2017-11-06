@@ -16,8 +16,7 @@ class ProfileFrame extends Component {
         name: "",
         id: 0,
         user_profile_pic: ""
-      },
-      profilePic: ""
+      }
     };
     this.uploadImage = this.uploadImage.bind(this);
   }
@@ -53,9 +52,6 @@ class ProfileFrame extends Component {
       function() {
         let downloadURL = uploadTask.snapshot.downloadURL;
         let userId = that.state.user.id;
-        that.setState({ profilePic: downloadURL });
-        // console.log(downloadURL);
-        // console.log(userId);
         console.log(that.state);
         return axios.post(`/profile/picture`, { url: downloadURL, id: userId });
       }
@@ -77,7 +73,7 @@ class ProfileFrame extends Component {
         <div id="profile-back">
           <h1>My Profile</h1>
           <h3>
-            Welcome, <b>{this.state.user.name || "currentUser"}</b>!
+            Welcome, <b>{this.state.user.name || "current user"}</b>!
           </h3>
           <img
             id="profile-resizer"
