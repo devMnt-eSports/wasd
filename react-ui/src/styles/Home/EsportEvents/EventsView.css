@@ -8,3 +8,6 @@
 .teamImage{
 	height:55px;
 }
+.tabs__labels{list-style-type:none;}
+.gameTab{display:inline-block;}
+	.gameTab a{color:inherit;text-decoration:none;}
