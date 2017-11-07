@@ -143,7 +143,6 @@ app.get("/forums", (req, res, next) => {
     .getCurrentUser([req.user.id])
     .then(response => {
       user = response[0];
-      console.log(posts.length);
     })
     .then(() => {
       db
@@ -151,7 +150,17 @@ app.get("/forums", (req, res, next) => {
         .then(response => {
           console.log(response);
           posts = response;
-          res.send({ posts, user });
+        })
+        .then(() => {
+          // PUT A NEW SQL CALL HERE
+          db
+            .NEWSQLCALL()
+            .then(response => {
+              console.log(response);
+              posts.push(response);
+              res.send({ posts, user });
+            })
+            .catch(error => console.log(`Comments Error: ${error}`));
         })
         .catch(error => console.log(`Forums User Error: ${error}`));
     })
