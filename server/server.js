@@ -8,7 +8,8 @@ const express = require("express"),
   cors = require("cors"),
   massive = require("massive"),
   path = require("path"),
-  session = require("express-session");
+      session = require("express-session"),
+      async = require('async');
 
 const config = require("./config.json");
 
@@ -148,23 +149,22 @@ app.get("/forums", (req, res, next) => {
       db
         .getForumPosts()
         .then(response => {
-          console.log(response);
+          //console.log(response);
           posts = response;
-        })
-        .then(() => {
-          // PUT A NEW SQL CALL HERE
-          db
-            .NEWSQLCALL()
-            .then(response => {
-              console.log(response);
-              posts.push(response);
-              res.send({ posts, user });
-            })
-            .catch(error => console.log(`Comments Error: ${error}`));
-        })
-        .catch(error => console.log(`Forums User Error: ${error}`));
+        }).then(() => {
+	    tasks = [];
+	    posts.forEach(x => {
+		tasks.push(() => {
+		    db.getCommentsByPost(x.id).then((response)=>{
+			x.comments = response;
+			console.log(x);
+		    })
+		})
+	    })
+	    tasks.push(res.send({posts, user}));
+	    async.waterfall(tasks);
+	})
     })
-    .catch(error => console.log(`User Error: ${error}`));
 });
 
 app.post("/forums/post", (req, res, next) => {
