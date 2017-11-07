@@ -27,14 +27,17 @@ class GamingNews extends Component{
 		return(
 			<div id="gamingNews">
 				<h2>Today In Gaming:</h2>
+				<div className="gamingArticle">
 				{
 					this.state.news.articles.map( (article, i)=>{
 						return <div key={i}>
-							<h4>{article.title} - {article.author}</h4>
+							<h4><a href={article.url} target="_blank">{article.title}</a> <span className="headerLine">|</span> <small>{article.author}</small></h4>
+							<p>{article.publishedAt}</p>
 							<img src={article.urlToImage} alt={'img'} className="gamingNewsImage" />
 						</div>
 					})
 				}
+				</div>
 			</div>
 		)
 	}

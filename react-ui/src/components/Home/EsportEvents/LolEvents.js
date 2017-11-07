@@ -1,7 +1,5 @@
 import React, { Component } from 'react'
 
-import '../../../styles/Home/EsportEvents/EventsView.css'
-
 const lolWorldsUrl = 'https://api.pandascore.co/tournaments/569?token=uUZY3m0LxYAOan30JqJ-hA-SmWJEiC7JUmNPQcbOu4IZkq9fLsk'
 
 class LolEvents extends Component{
