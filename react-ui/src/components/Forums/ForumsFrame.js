@@ -18,11 +18,16 @@ class ForumsFrame extends Component {
         user_profile_pic: ""
       },
       content: "",
-      title: ""
+      title: "",
+      comment: {
+        title: "",
+        content: ""
+      }
     };
     this.uploadImage = this.uploadImage.bind(this);
     this.handleTitleChange = this.handleTitleChange.bind(this);
     this.handleContentChange = this.handleContentChange.bind(this);
+    this.handleCommentChange = this.handleCommentChange.bind(this);
   }
 
   submitImageUpload(event) {
@@ -68,17 +73,33 @@ class ForumsFrame extends Component {
       })
       .then(response => {
         this.setState({ posts: response.data });
-        console.log(this.state);
+      });
+  }
+
+  postComment(event) {
+    event.preventDefault();
+    return axios
+      .post(`/forums/comment`, {
+        title: this.state.comment.title,
+        content: this.state.comment.content,
+        user: this.state.user.name,
+        user_profile_pic: this.state.user.user_profile_pic
+      })
+      .then(response => {
+        this.setState({ posts: response.data });
       });
   }
 
   handleTitleChange(event) {
-    console.log(this.state.title);
     this.setState({ title: event.target.value });
   }
 
   handleContentChange(event) {
     this.setState({ content: event.target.value });
+  }
+
+  handleCommentChange(event) {
+    this.setState({ comment: { content: event.target.value } });
   }
 
   componentDidMount() {
@@ -114,12 +135,16 @@ class ForumsFrame extends Component {
                 posted by <b>{e.user_name}</b>
               </p>
               <p>{e.content}</p>
+              <p>{e.comment_id}</p>
               <input
                 id="comment-input"
                 type="text"
                 placeholder="Leave comment..."
+                onChange={e => this.handleCommentChange(e)}
               />
-              <button>Comment</button>
+              <button onClick={event => this.postComment(event)}>
+                Comment
+              </button>
               <button>Upvote</button>
               <button>Report</button>
             </div>

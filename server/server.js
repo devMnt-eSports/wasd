@@ -140,18 +140,22 @@ app.get("/forums", (req, res, next) => {
   let posts = [];
   let user = {};
   db
-    .getForumPosts()
-    .then(response => {
-      posts = response;
-    })
-    .catch(error => console.log(`Forums Error: ${error}`));
-  db
     .getCurrentUser([req.user.id])
     .then(response => {
       user = response[0];
-      res.send({ posts, user });
+      console.log(posts.length);
     })
-    .catch(error => console.log(`Forums User Error: ${error}`));
+    .then(() => {
+      db
+        .getForumPosts()
+        .then(response => {
+          console.log(response);
+          posts = response;
+          res.send({ posts, user });
+        })
+        .catch(error => console.log(`Forums User Error: ${error}`));
+    })
+    .catch(error => console.log(`User Error: ${error}`));
 });
 
 app.post("/forums/post", (req, res, next) => {
@@ -169,6 +173,20 @@ app.post("/forums/post", (req, res, next) => {
       res.json(response);
     })
     .catch(error => console.log(`Post Error: ${error}`));
+});
+
+app.post("/forums/comment", (req, res, next) => {
+  console.log(req.body);
+  const db = app.get("db");
+  db
+    .postComment([
+      req.body.title,
+      req.body.user,
+      req.body.content,
+      req.body.user_profile_pic
+    ])
+    .then(response => res.json(response))
+    .catch(error => console.log(`Comment Error: ${error}`));
 });
 
 app.get("/profile", (req, res, next) => {
