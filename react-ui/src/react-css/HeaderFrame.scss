@@ -1,0 +1,35 @@
+#HeaderFrame{
+	width:100%;position:relative;
+	padding:1rem;
+
+	font-family: 'Share Tech Mono', monospace;
+
+	/*background-color: pink;*/
+	border-bottom:1px solid silver;
+	h3, h4, p{margin:0;}
+}
+
+.wasd_div{
+	display:inline-block;
+	img{height:85px;}
+}
+
+.navGamesDiv{text-align:center;padding:10px 0;}
+
+.navGame{display:inline-block;padding:0 10px;}
+
+.headerLogin{
+	position:absolute;top:1rem;right:1rem;text-align:right;
+	h4, p{cursor:pointer;}
+	h4{font-size:1.5rem;letter-spacing:-.1rem}
+	p{letter-spacing:-.1rem;}
+}
+
+#NavBarFrame{
+	padding-top:1rem;
+	a{text-decoration:none;color:inherit;}
+	ul{margin:0;padding:0;list-style-type:none;}
+	li{display:inline-block;}
+	li:first-child{padding-right:1rem;}
+	h3{font-size:1.5rem;}
+}

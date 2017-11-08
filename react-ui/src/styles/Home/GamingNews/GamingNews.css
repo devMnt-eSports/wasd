@@ -1,3 +1,12 @@
-.gamingNewsImage {
-  width: 700px;
+#gamingNews{
+	font-family: 'Exo', sans-serif;
 }
+	#gamingNews a{color:inherit;text-decoration:none;}
+	#gamingNews h2,#gamingNews h4,#gamingNews p{margin:0;}
+	#gamingNews h2{font-size:2.5rem;}
+	#gamingNews h4{font-size:1.5rem;}
+		#gamingNews h4 small{font-weight:400;font-size:1.25rem;}
+.gamingNewsImage{width:500px;}
+
+.gamingArticle{width:550px;}
+.headerLine{color:red;}

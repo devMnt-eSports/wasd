@@ -1,0 +1,51 @@
+#HeaderFrame {
+  width: 100%;
+  position: relative;
+  padding: 1rem;
+  font-family: 'Share Tech Mono', monospace;
+  /*background-color: pink;*/
+  border-bottom: 1px solid silver; }
+  #HeaderFrame h3, #HeaderFrame h4, #HeaderFrame p {
+    margin: 0; }
+
+.wasd_div {
+  display: inline-block; }
+  .wasd_div img {
+    height: 85px; }
+
+.navGamesDiv {
+  text-align: center;
+  padding: 10px 0; }
+
+.navGame {
+  display: inline-block;
+  padding: 0 10px; }
+
+.headerLogin {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  text-align: right; }
+  .headerLogin h4, .headerLogin p {
+    cursor: pointer; }
+  .headerLogin h4 {
+    font-size: 1.5rem;
+    letter-spacing: -.1rem; }
+  .headerLogin p {
+    letter-spacing: -.1rem; }
+
+#NavBarFrame {
+  padding-top: 1rem; }
+  #NavBarFrame a {
+    text-decoration: none;
+    color: inherit; }
+  #NavBarFrame ul {
+    margin: 0;
+    padding: 0;
+    list-style-type: none; }
+  #NavBarFrame li {
+    display: inline-block; }
+  #NavBarFrame li:first-child {
+    padding-right: 1rem; }
+  #NavBarFrame h3 {
+    font-size: 1.5rem; }

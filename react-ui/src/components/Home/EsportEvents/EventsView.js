@@ -4,6 +4,8 @@ import { HashRouter as Router, Route, Switch, Link } from "react-router-dom"
 import LolEvents from './LolEvents'
 import OwEvents from './OwEvents'
 
+import '../../../styles/Home/EsportEvents/EventsView.css'
+
 class EventsView extends Component{
 	
 	render(){

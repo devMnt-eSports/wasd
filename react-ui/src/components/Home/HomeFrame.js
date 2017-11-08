@@ -1,16 +1,24 @@
 import React, { Component } from 'react'
 import { HashRouter as Router, Route, Switch, Link } from "react-router-dom"
 
+import axios from "axios";
+import "../../react-css/react-css/profile.css";
+
 import GamingNews from './GamingNews/GamingNews'
 import EsportEvents from './EsportEvents/EsportEvents'
 
 import '../../styles/Home/HomeFrame.css'
 
-
-
-
-
 class HomeFrame extends Component{
+
+	componentDidMount() {
+	  return axios.get(`/`).then(results => {
+	    console.log(results.data);
+	    this.setState({
+	      user: results.data
+	    });
+	  });
+	}
 
 	render(){
 
@@ -35,5 +43,4 @@ class HomeFrame extends Component{
 		)
 	}
 }
-
 export default HomeFrame

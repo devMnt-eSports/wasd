@@ -1,6 +1,9 @@
 import React, { Component } from 'react'
 
+import nia from '../../../assets/nia.png'
+
 const owEventUrl = 'https://api.pandascore.co/leagues/2042/tournaments?token=uUZY3m0LxYAOan30JqJ-hA-SmWJEiC7JUmNPQcbOu4IZkq9fLsk'
+
 
 class OwEvents extends Component{
 
@@ -10,6 +13,7 @@ class OwEvents extends Component{
 			owTeams: [],
 			owMatches: []
 		}
+
 	}
 
 	componentDidMount(){
@@ -32,7 +36,7 @@ class OwEvents extends Component{
 					this.state.owTeams.map( (ot, oti) => {
 						return <div className="teamDiv" key={oti}>
 						
-							<img src={ot.image_url} alt={`missing ${ot.name} logo`} className="teamImage" />
+							<img src={ot.image_url} alt={nia} className="teamImage" />
 							<p>{ot.name}</p>
 						</div>
 					})
@@ -50,5 +54,4 @@ class OwEvents extends Component{
 		)
 	}
 }
-
 export default OwEvents
