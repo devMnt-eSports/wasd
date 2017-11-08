@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { fire as firebase } from "../../fire";
+import FilterOptions from "./ProfileFilterOptions/ProfileFilterOptions.js";
 
 import axios from "axios";
 
@@ -10,6 +11,7 @@ class ProfileFrame extends Component {
     super(props);
 
     this.state = {
+      posts: [],
       file: "",
       imagePreviewUrl: "",
       user: {
@@ -58,41 +60,87 @@ class ProfileFrame extends Component {
     );
   }
 
-  componentDidMount() {
-    return axios.get(`/profile`).then(results => {
-      console.log(results.data);
-      this.setState({
-        user: results.data
-      });
+  async componentDidMount() {
+    const profileRequest = await axios.get(`/profile`);
+    const postsRequest = await axios.get(`/profile/personal-posts`);
+
+    this.setState({
+      user: profileRequest.data,
+      posts: postsRequest.data
     });
   }
 
   render() {
+    let myPosts = null;
+    if (this.state.posts) {
+      let postsArr = this.state.posts;
+
+      myPosts = postsArr.reverse().map((e, i) => {
+        return (
+          <div className="example-post" key={i}>
+            <div className="flex-post">
+              <h1> {e.title} </h1>
+              <img
+                id="profile-resizer"
+                src={
+                  e.user_profile_pic ||
+                  "https://vignette.wikia.nocookie.net/jamesbond/images/6/61/Generic_Placeholder_-_Profile.jpg/revision/latest?cb=20121227201208"
+                }
+              />
+            </div>
+            <div>
+              <p>
+                posted by <b>{e.user_name}</b>
+              </p>
+              {/* <div>{commentSection}</div> */}
+              <input
+                id="comment-input"
+                type="text"
+                placeholder="Leave comment..."
+                onChange={e => this.handleCommentChange(e)}
+              />
+              <button onClick={event => this.postComment(event)}>
+                Comment
+              </button>
+              <button>Upvote</button>
+              <button>Report</button>
+            </div>
+          </div>
+        );
+      });
+    }
     return (
-      <div className="profile-head">
-        <div id="profile-back">
-          <h1>My Profile</h1>
-          <h3>
-            Welcome, <b>{this.state.user.name || "current user"}</b>!
-          </h3>
-          <img
-            id="profile-resizer"
-            src={
-              this.state.user.user_profile_pic ||
-              this.state.imagePreviewUrl ||
-              "https://vignette.wikia.nocookie.net/jamesbond/images/6/61/Generic_Placeholder_-_Profile.jpg/revision/latest?cb=20121227201208"
-            }
-            alt={this.state.user.name}
-          />
-          <form onSubmit={event => this.uploadImage(event)}>
-            <input
-              type="file"
-              onChange={event => this.submitImageUpload(event)}
+      <div>
+        <div className="profile-head">
+          <div id="profile-back">
+            <h1>My Profile</h1>
+            <h3>
+              Welcome, <b>{this.state.user.name || "current user"}</b>!
+            </h3>
+            <img
+              id="profile-resizer"
+              src={
+                this.state.user.user_profile_pic ||
+                this.state.imagePreviewUrl ||
+                "https://vignette.wikia.nocookie.net/jamesbond/images/6/61/Generic_Placeholder_-_Profile.jpg/revision/latest?cb=20121227201208"
+              }
+              alt={this.state.user.name}
             />
-            <button type="submit" onClick={event => this.uploadImage(event)}>
-              Upload Image
-            </button>
-          </form>
+            <form onSubmit={event => this.uploadImage(event)}>
+              <input
+                type="file"
+                onChange={event => this.submitImageUpload(event)}
+              />
+              <button type="submit" onClick={event => this.uploadImage(event)}>
+                Upload Image
+              </button>
+            </form>
+          </div>
+        </div>
+        <div>
+          <p>Filter By:</p>
+          <FilterOptions update={this.updateFilter} />
+          {myPosts}
         </div>
       </div>
     );
