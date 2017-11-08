@@ -136,7 +136,7 @@ class ForumsFrame extends Component {
                   />
                 </div>
               </div>
-              <div>
+              <div className="p-body">
                 <p id="posted-by">
                   posted by <b>{e.user_name}</b>
                 </p>
