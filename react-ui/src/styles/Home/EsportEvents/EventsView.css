@@ -1,13 +1,14 @@
 
-#LolEvents, #OwEvents{width:300px;display:inline-block;}
+#LolEvents, #OwEvents{width:600px;display:inline-block;}
 	#EventsView p{margin:0;font-size:.7rem;}
 
-
+#EsportEvents{padding:1rem;}	
+	#EsportEvents h2{margin:0;}
 
 .teamDiv{display:inline-block;text-align:center;}
 .teamImage{
 	height:55px;
 }
-.tabs__labels{list-style-type:none;}
-.gameTab{display:inline-block;}
+.tabs__labels{list-style-type:none;margin:0;padding:0;}
+.gameTab{display:inline-block;padding:.5rem;}
 	.gameTab a{color:inherit;text-decoration:none;}
