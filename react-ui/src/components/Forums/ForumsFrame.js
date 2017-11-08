@@ -124,7 +124,9 @@ class ForumsFrame extends Component {
           <div className="flex-forum" key={i}>
             <div className="center-forum">
               <div className="flex-post">
-                <h1> {e.title} </h1>
+                <h1>
+                  <b>{e.title}</b>
+                </h1>
                 <div id="profile-resizer">
                   <img
                     src={
@@ -134,11 +136,11 @@ class ForumsFrame extends Component {
                   />
                 </div>
               </div>
-              <div>
-                <p>
+              <div className="p-body">
+                <p id="posted-by">
                   posted by <b>{e.user_name}</b>
                 </p>
-                <p>{e.content}</p>
+                <p id="forum-paragraph">{e.content}</p>
                 <CommentSection posts={e.comments} />
                 <input
                   id="comment-input"
@@ -166,7 +168,9 @@ class ForumsFrame extends Component {
         <div className="flex-forum">
           <div className="center-forum">
             <div className="flex-post">
-              <h1>Write a Post...</h1>
+              <h1>
+                <b>Write a Post...</b>
+              </h1>
               <div id="profile-resizer">
                 <img
                   src={

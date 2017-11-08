@@ -1,12 +1,14 @@
-@import url("https://fonts.googleapis.com/css?family=Orbitron:b");
+@import url("https://fonts.googleapis.com/css?family=Orbitron:b|Aldrich|Electrolize");
 body {
   margin: 0;
-  background-color: #a9a9a9; }
+  background: linear-gradient(#900, #4c0000); }
 
 #profile-resizer {
-  height: 130px;
-  width: 130px;
+  margin: 15px 30px 0 0;
+  height: 110px;
+  width: 110px;
   overflow: hidden;
+  border: 2px solid #000;
   position: relative; }
   #profile-resizer img {
     max-height: 150px;
@@ -24,7 +26,8 @@ body {
   background-image: url("https://i.pinimg.com/originals/da/fc/bd/dafcbd84467ca2b4e5365ca1a65475ad.jpg");
   background-position: 50% 50%;
   text-align: center;
-  padding: 100px; }
+  padding: 100px;
+  border-bottom: 2px solid #000; }
   #forum-splash h1 {
     margin: 0 auto;
     padding: 20px;
@@ -38,20 +41,42 @@ body {
 #comment-input {
   width: 500px; }
 
+#posted-by {
+  font-family: "Electrolize", sans-serif;
+  padding-left: 10px; }
+  #posted-by b {
+    font-family: "Orbitron", sans-serif; }
+
+#forum-paragraph {
+  border: 2px solid #000;
+  padding: 20px 5px 20px 5px;
+  font-size: 17px;
+  font-family: "Electrolize", sans-serif;
+  line-height: 1.5; }
+
 .flex-forum {
   display: flex;
   justify-content: center; }
 
 .center-forum {
   width: 70%;
+  background: linear-gradient(#5f6c7a, #9fabb7);
   border: 3px solid #000;
   border-radius: 2px;
-  padding: 10px;
+  padding: 20px;
   margin: 10px; }
 
 .flex-post {
   display: flex;
   justify-content: space-between; }
   .flex-post h1 {
+    font-size: 35px;
+    padding: 10px 0 0 20px;
     max-width: 50vw;
-    min-height: 75px; }
+    min-height: 75px;
+    font-family: "Aldrich", sans-serif; }
+
+.p-body button {
+  margin-left: 20px;
+  background-color: #5f6c7a;
+  color: #fff; }
