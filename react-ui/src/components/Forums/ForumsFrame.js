@@ -116,7 +116,13 @@ class ForumsFrame extends Component {
     let forumPost = null;
     if (this.state.posts) {
       let postsArr = this.state.posts;
-
+      // let commentSection = postsArr.comments.reverse().map((e, i) => {
+      //   <div key={i}>
+      //     <p>{e.post_user}</p>
+      //     <p>{e.comment_content}</p>
+      //   </div>;
+      // });
+	//console.log(this.state.posts[0].comments)
       forumPost = postsArr.reverse().map((e, i) => {
         return (
           <div className="example-post" key={i}>
@@ -134,8 +140,7 @@ class ForumsFrame extends Component {
               <p>
                 posted by <b>{e.user_name}</b>
               </p>
-              <p>{e.content}</p>
-              <p>{e.comment_id}</p>
+              <div>{/*commentSection*/}</div>
               <input
                 id="comment-input"
                 type="text"
