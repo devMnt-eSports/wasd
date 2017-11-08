@@ -92,6 +92,7 @@ class ProfileFrame extends Component {
               <p>
                 posted by <b>{e.user_name}</b>
               </p>
+              <p>{e.content}</p>
               {/* <div>{commentSection}</div> */}
               <input
                 id="comment-input"

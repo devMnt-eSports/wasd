@@ -2,6 +2,8 @@ import React, { Component } from "react";
 import { fire as firebase } from "../../fire";
 import "../../react-css/react-css/forum.css";
 
+import CommentSection from "./ForumsComments.js";
+
 import axios from "axios";
 
 class ForumsFrame extends Component {
@@ -72,7 +74,7 @@ class ForumsFrame extends Component {
         user_profile_pic: this.state.user.user_profile_pic
       })
       .then(response => {
-        this.setState({ posts: response.data });
+        this.setState({ posts: response.data.reverse() });
       });
   }
 
@@ -86,7 +88,7 @@ class ForumsFrame extends Component {
         user_profile_pic: this.state.user.user_profile_pic
       })
       .then(response => {
-        this.setState({ posts: response.data });
+        this.setState({ posts: response.data.reverse() });
       });
   }
 
@@ -105,7 +107,7 @@ class ForumsFrame extends Component {
   componentDidMount() {
     return axios.get("/forums").then(response => {
       this.setState({
-        posts: response.data.posts,
+        posts: response.data.posts.reverse(),
         user: response.data.user
       });
       console.log(this.state);
@@ -116,14 +118,8 @@ class ForumsFrame extends Component {
     let forumPost = null;
     if (this.state.posts) {
       let postsArr = this.state.posts;
-      // let commentSection = postsArr.comments.reverse().map((e, i) => {
-      //   <div key={i}>
-      //     <p>{e.post_user}</p>
-      //     <p>{e.comment_content}</p>
-      //   </div>;
-      // });
-	//console.log(this.state.posts[0].comments)
-      forumPost = postsArr.reverse().map((e, i) => {
+
+      forumPost = postsArr.map((e, i) => {
         return (
           <div className="example-post" key={i}>
             <div className="flex-post">
@@ -140,7 +136,8 @@ class ForumsFrame extends Component {
               <p>
                 posted by <b>{e.user_name}</b>
               </p>
-              <div>{/*commentSection*/}</div>
+              <p>{e.content}</p>
+              <CommentSection posts={e.comments} />
               <input
                 id="comment-input"
                 type="text"
@@ -163,12 +160,6 @@ class ForumsFrame extends Component {
         <div id="forum-splash">
           <h1>GitRektHub</h1>
         </div>
-        <a href="http://localhost:5000/auth/twitch">
-          <p>Twitch Login</p>
-        </a>
-        <a href="http://localhost:5000/auth/steam">
-          <p>Steam Login</p>
-        </a>
         <div>
           <div className="center-forum">
             <div className="example-post">

@@ -8,8 +8,8 @@ const express = require("express"),
   cors = require("cors"),
   massive = require("massive"),
   path = require("path"),
-      session = require("express-session"),
-      async = require('async');
+  session = require("express-session"),
+  async = require("async");
 
 const config = require("./config.json");
 
@@ -151,20 +151,21 @@ app.get("/forums", (req, res, next) => {
         .then(response => {
           //console.log(response);
           posts = response;
-        }).then(() => {
-	    tasks = [];
-	    posts.forEach(x => {
-		tasks.push(() => {
-		    db.getCommentsByPost(x.id).then((response) =>{
-			x.comments = response;
-			console.log(x);
-		    })
-		})
-	    })
-	    tasks.push(res.send({posts, user}));
-	    async.waterfall(tasks);
-	})
-    })
+        })
+        .then(() => {
+          tasks = [];
+          posts.forEach(x => {
+            tasks.push(() => {
+              db.getCommentsByPost(x.id).then(response => {
+                x.comments = response;
+                console.log(x);
+              });
+            });
+          });
+          tasks.push(res.send({ posts, user }));
+          async.waterfall(tasks);
+        });
+    });
 });
 
 app.post("/forums/post", (req, res, next) => {
@@ -204,6 +205,14 @@ app.get("/profile", (req, res, next) => {
     .getCurrentUser([req.user.id])
     .then(response => res.json(response[0]))
     .catch(error => console.log(`Error: ${error}`));
+});
+
+app.get("/profile/personal-posts", (req, res, next) => {
+  const db = app.get("db");
+  db
+    .getMyPosts([req.user.name])
+    .then(response => res.json(response))
+    .catch(error => console.log(`Personal Error: ${error}`));
 });
 
 app.post("/profile/picture", (req, res, next) => {
