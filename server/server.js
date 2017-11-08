@@ -155,7 +155,7 @@ app.get("/forums", (req, res, next) => {
 	    tasks = [];
 	    posts.forEach(x => {
 		tasks.push(() => {
-		    db.getCommentsByPost(x.id).then((response)=>{
+		    db.getCommentsByPost(x.id).then((response) =>{
 			x.comments = response;
 			console.log(x);
 		    })
