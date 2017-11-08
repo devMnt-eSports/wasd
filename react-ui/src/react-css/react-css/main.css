@@ -5,7 +5,7 @@ body {
 :root {
   --toggler-size: 30px;
   --toggler-line-number: 3;
-  --toggler-line-size: calc( var(--toggler-size) / (var(--toggler-line-number) + var(--toggler-line-number) - 1));
+  --toggler-line-size: calc( var(--toggler-size) / (var(--toggler-line-number) + var(--toggler-line-number) - 1));
   --toggler-offset-left: 10px;
   --toggler-offset-top: 10px;
   --toggler-color: Tomato;
@@ -31,11 +31,11 @@ body {
   right: 0;
   transition: all 0.25s ease-out; }
   .menu-toggler__line:nth-child(1) {
-    top: calc( var(--toggler-line-size) * 1 + (var(--toggler-line-size) * (1 - 2))); }
+    top: calc( var(--toggler-line-size) * 1 + (var(--toggler-line-size) * (1 - 2))); }
   .menu-toggler__line:nth-child(2) {
-    top: calc( var(--toggler-line-size) * 2 + (var(--toggler-line-size) * (2 - 2))); }
+    top: calc( var(--toggler-line-size) * 2 + (var(--toggler-line-size) * (2 - 2))); }
   .menu-toggler__line:nth-child(3) {
-    top: calc( var(--toggler-line-size) * 3 + (var(--toggler-line-size) * (3 - 2))); }
+    top: calc( var(--toggler-line-size) * 3 + (var(--toggler-line-size) * (3 - 2))); }
 
 .input-toggler {
   position: absolute;
