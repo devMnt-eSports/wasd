@@ -32,9 +32,13 @@ input[type="file"] {
     min-width: 100%;
     position: absolute; }
 
-.profile-body {
-  padding-bottom: 50px;
-  background: linear-gradient(#900, #4c0000); }
+#filter {
+  margin-top: 0;
+  padding-top: 20px; }
+
+.profile-bg {
+  background: linear-gradient(#900, #4c0000);
+  padding-bottom: 50px; }
 
 .flex-personal {
   display: flex;
