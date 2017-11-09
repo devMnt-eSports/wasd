@@ -150,21 +150,9 @@ app.get("/forums", (req, res, next) => {
         .getForumPosts()
         .then(response => {
           //console.log(response);
-          posts = response;
+            posts = response;
+	    res.send({posts, user})
         })
-        .then(() => {
-          tasks = [];
-          posts.forEach(x => {
-            tasks.push(() => {
-              db.getCommentsByPost(x.id).then(response => {
-                x.comments = response;
-                console.log(x);
-              });
-            });
-          });
-          tasks.push(res.send({ posts, user }));
-          async.waterfall(tasks);
-        });
     });
 });
 
@@ -185,11 +173,12 @@ app.post("/forums/post", (req, res, next) => {
     .catch(error => console.log(`Post Error: ${error}`));
 });
 
-app.get("/forums/comment/:forum_post", (req, res, next) => {
-    app.get("db").getCommentsByPost(req.params.forum_post).then(response){
+app.get("/forums/comments/:forum_post", (req, res, next) => {
+    app.get("db").getCommentsByPost(req.params.forum_post).then((response) => {
 	res.send(response);
-    }
-}
+    })
+})
+	
 app.post("/forums/comment", (req, res, next) => {
   console.log(req.body);
   const db = app.get("db");
