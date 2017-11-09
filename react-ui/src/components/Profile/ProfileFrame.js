@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { fire as firebase } from "../../fire";
 import FilterOptions from "./ProfileFilterOptions/ProfileFilterOptions.js";
+import CommentSection from "../Forums/ForumsComments.js";
 
 import axios from "axios";
 
@@ -75,43 +76,47 @@ class ProfileFrame extends Component {
     if (this.state.posts) {
       let postsArr = this.state.posts;
 
-      myPosts = postsArr.reverse().map((e, i) => {
-        return (
-          <div className="flex-personal" key={i}>
-            <div className="center-personal">
-              <div className="flex-my-posts">
-                <h1> {e.title} </h1>
-                <div id="personal-resizer">
-                  <img
-                    src={
-                      e.user_profile_pic ||
-                      "https://vignette.wikia.nocookie.net/jamesbond/images/6/61/Generic_Placeholder_-_Profile.jpg/revision/latest?cb=20121227201208"
-                    }
+      myPosts = postsArr
+        .sort((a, b) => {
+          return b.id - a.id;
+        })
+        .map((e, i) => {
+          return (
+            <div className="flex-personal" key={i}>
+              <div className="center-personal">
+                <div className="flex-my-posts">
+                  <h1> {e.title} </h1>
+                  <div id="personal-resizer">
+                    <img
+                      src={
+                        e.user_profile_pic ||
+                        "https://vignette.wikia.nocookie.net/jamesbond/images/6/61/Generic_Placeholder_-_Profile.jpg/revision/latest?cb=20121227201208"
+                      }
+                    />
+                  </div>
+                </div>
+                <div>
+                  <p>
+                    posted by <b>{e.user_name}</b>
+                  </p>
+                  <p>{e.content}</p>
+                  <CommentSection post={e.id} />
+                  <input
+                    id="comment-input"
+                    type="text"
+                    placeholder="Leave comment..."
+                    onChange={e => this.handleCommentChange(e)}
                   />
+                  <button onClick={event => this.postComment(event)}>
+                    Comment
+                  </button>
+                  <button>Upvote</button>
+                  <button>Report</button>
                 </div>
               </div>
-              <div>
-                <p>
-                  posted by <b>{e.user_name}</b>
-                </p>
-                <p>{e.content}</p>
-                {/* <div>{commentSection}</div> */}
-                <input
-                  id="comment-input"
-                  type="text"
-                  placeholder="Leave comment..."
-                  onChange={e => this.handleCommentChange(e)}
-                />
-                <button onClick={event => this.postComment(event)}>
-                  Comment
-                </button>
-                <button>Upvote</button>
-                <button>Report</button>
-              </div>
             </div>
-          </div>
-        );
-      });
+          );
+        });
     }
     return (
       <div>
