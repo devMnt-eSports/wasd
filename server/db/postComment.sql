@@ -1,3 +1,2 @@
-INSERT INTO comment_section (title, user_name, content, user_profile_pic)
+INSERT INTO comment_section (post_user, comment_content, comment_pic, forum_id)
 VALUES ($1, $2, $3, $4);
-SELECT * FROM forum_posts;

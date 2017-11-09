@@ -78,19 +78,28 @@ class ForumsFrame extends Component {
       });
   }
 
-  postComment(event) {
+    postComment(event, n) {
     event.preventDefault();
     return axios
       .post(`/forums/comment`, {
         title: this.state.comment.title,
         content: this.state.comment.content,
         user: this.state.user.name,
-        user_profile_pic: this.state.user.user_profile_pic
+          user_profile_pic: this.state.user.user_profile_pic,
+	  forum_id: n
       })
       .then(response => {
-        this.setState({ posts: response.data.reverse() });
-      });
-  }
+          axios.get("/forums").then(res => {
+	      this.setState({ posts: res.data.posts.reverse(),
+			      user: res.data.user});
+	      console.log(this);
+	      this.forceUpdate();
+	  })})
+    }
+	  
+				    
+				 
+  
 
   handleTitleChange(event) {
     this.setState({ title: event.target.value });
@@ -148,7 +157,7 @@ class ForumsFrame extends Component {
                   placeholder="Leave comment..."
                   onChange={e => this.handleCommentChange(e)}
                 />
-                <button onClick={event => this.postComment(event)}>
+                <button onClick={event => this.postComment(event, e.id)}>
                   Comment
                 </button>
                 <button>Upvote</button>

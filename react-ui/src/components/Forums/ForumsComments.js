@@ -17,7 +17,7 @@ class CommentSection extends Component {
   }
 
   render() {
-    return this.state.comments.reverse().map((e, i) => {
+    return this.state.comments.map((e, i) => {
       return (
         <div className="comment-box" key={i}>
           <div className="flex-post">
