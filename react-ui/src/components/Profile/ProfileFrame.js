@@ -95,11 +95,11 @@ class ProfileFrame extends Component {
                     />
                   </div>
                 </div>
-                <div>
-                  <p>
+                <div className="p-body">
+                  <p id="posted-by">
                     posted by <b>{e.user_name}</b>
                   </p>
-                  <p>{e.content}</p>
+                  <p id="forum-paragraph">{e.content}</p>
                   <CommentSection post={e.id} />
                   <input
                     id="comment-input"
@@ -129,8 +129,8 @@ class ProfileFrame extends Component {
             <div id="personal-resizer">
               <img
                 src={
-                  this.state.user.user_profile_pic ||
                   this.state.imagePreviewUrl ||
+                  this.state.user.user_profile_pic ||
                   "https://vignette.wikia.nocookie.net/jamesbond/images/6/61/Generic_Placeholder_-_Profile.jpg/revision/latest?cb=20121227201208"
                 }
                 alt={this.state.user.name}

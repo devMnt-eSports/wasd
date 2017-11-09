@@ -180,7 +180,7 @@ class ForumsFrame extends Component {
         <div className="flex-forum">
           <div className="center-forum">
             <div className="flex-post">
-              <h1>
+              <h1 className="font-effect-fire-animation">
                 <b>Write a Post...</b>
               </h1>
               <div id="profile-resizer">
@@ -223,10 +223,15 @@ class ForumsFrame extends Component {
                 placeholder="Write your post..."
                 onChange={e => this.handleContentChange(e)}
               />
-              <button type="submit" onClick={event => this.postToForum(event)}>
-                Submit My Post!
-              </button>
             </div>
+            <button
+              id="post-writer-submit"
+              type="submit"
+              placeholder="Submit My Post!"
+              onClick={event => this.postToForum(event)}
+            >
+              <b>Submit My Post!</b>
+            </button>
           </div>
         </div>
         <div>{forumPost}</div>

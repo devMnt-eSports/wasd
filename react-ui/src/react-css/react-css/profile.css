@@ -8,6 +8,7 @@ input[type="file"] {
 #profile-back {
   margin: 0 auto;
   max-width: 30%;
+  font-family: "Orbitron", sans-serif;
   background-color: #000;
   color: #fff; }
   #profile-back div {
