@@ -184,10 +184,10 @@ app.post("/forums/comment", (req, res, next) => {
   const db = app.get("db");
   db
     .postComment([
-      req.body.title,
       req.body.user,
       req.body.content,
-      req.body.user_profile_pic
+	req.body.user_profile_pic,
+	req.body.forum_id
     ])
     .then(response => res.json(response))
     .catch(error => console.log(`Comment Error: ${error}`));

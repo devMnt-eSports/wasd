@@ -17,7 +17,7 @@ class CommentSection extends Component {
     
   render() {
       return (
-	  this.state.comments.reverse().map((e,i) => {
+	  this.state.comments.map((e,i) => {
 	      return(
 		  <div key={i}>
 		  <p>{e.post_user}</p>
