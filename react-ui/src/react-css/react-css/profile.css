@@ -33,6 +33,9 @@ input[type="file"] {
     min-width: 100%;
     position: absolute; }
 
+.profile-body {
+  margin-bottom: 50px; }
+
 .flex-personal {
   display: flex;
   justify-content: center; }
