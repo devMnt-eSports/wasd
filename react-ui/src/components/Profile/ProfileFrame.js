@@ -114,7 +114,7 @@ class ProfileFrame extends Component {
       });
     }
     return (
-      <div className="profile-body">
+      <div>
         <div className="profile-head">
           <div id="profile-back">
             <h1>My Profile</h1>
@@ -143,8 +143,8 @@ class ProfileFrame extends Component {
             </form>
           </div>
         </div>
-        <div>
-          <p>Filter By:</p>
+        <div className="profile-bg">
+          <p id="filter">Filter By:</p>
           <FilterOptions update={this.updateFilter} />
           {myPosts}
         </div>

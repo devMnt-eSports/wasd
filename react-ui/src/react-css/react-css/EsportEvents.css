@@ -1,0 +1,48 @@
+#EsportEvents {
+  font-family: 'Exo', sans-serif;
+  position: absolute;
+  right: 0;
+  width: 40vw;
+  overflow: hidden; }
+  #EsportEvents h2 {
+    font-size: 2.5rem; }
+  #EsportEvents h2, #EsportEvents p {
+    margin: 0; }
+  #EsportEvents ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0; }
+    #EsportEvents ul li {
+      display: inline-block; }
+
+.tabs__labels {
+  display: flex; }
+  .tabs__labels .gameTab {
+    flex: 1;
+    text-align: center; }
+    .tabs__labels .gameTab a {
+      text-decoration: none; }
+
+.teams {
+  display: flex; }
+  .teams .teamDiv {
+    margin: 2.5px;
+    padding: 2.5px;
+    flex: 1;
+    display: inline-block;
+    background-color: white;
+    border: 1px solid pink;
+    border-radius: 10px;
+    text-align: center;
+    overflow: hidden; }
+    .teams .teamDiv img {
+      width: 50px; }
+    .teams .teamDiv p {
+      font-size: .7rem; }
+  .teams .teamDiv:first-child {
+    margin-left: 5px; }
+  .teams .teamDiv:last-child {
+    margin-right: 5px; }
+
+.matches {
+  padding: 5px; }

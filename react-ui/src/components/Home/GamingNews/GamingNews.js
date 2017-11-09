@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 
 import "../../../styles/Home/GamingNews/GamingNews.css";
+import '../../../react-css/react-css/GamingNews.css'
 
 const gamingUrl =
   "https://newsapi.org/v1/articles?source=polygon&sortBy=top&apiKey=2107a41c7d9549d497b83f34f6f8aa6b";

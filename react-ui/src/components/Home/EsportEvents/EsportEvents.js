@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 
 import EventsView from './EventsView'
+import '../../../react-css/react-css/EsportEvents.css'
 
 
 class EsportEvents extends Component{

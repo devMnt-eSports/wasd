@@ -1,7 +1,6 @@
 @import url("https://fonts.googleapis.com/css?family=Orbitron:b|Aldrich|Electrolize");
 body {
-  margin: 0;
-  background: linear-gradient(#900, #4c0000); }
+  margin: 0; }
 
 #profile-resizer {
   margin: 15px 30px 0 0;
@@ -45,7 +44,8 @@ body {
   font-family: "Electrolize", sans-serif;
   padding-left: 10px; }
   #posted-by b {
-    font-family: "Orbitron", sans-serif; }
+    font-family: "Orbitron", sans-serif;
+    font-size: 16px; }
 
 #forum-paragraph {
   border: 2px solid #000;
@@ -53,6 +53,32 @@ body {
   font-size: 17px;
   font-family: "Electrolize", sans-serif;
   line-height: 1.5; }
+
+#comment-profile {
+  margin: 5px 45px 0 0;
+  height: 55px;
+  width: 55px;
+  overflow: hidden;
+  border: 2px solid #000;
+  position: relative; }
+  #comment-profile img {
+    max-height: 75px;
+    max-width: auto;
+    left: -1000%;
+    right: -1000%;
+    top: -1000%;
+    bottom: -1000%;
+    margin: auto;
+    min-height: 100%;
+    min-width: 100%;
+    position: absolute; }
+
+#comment-content {
+  margin: 0;
+  padding-left: 5px; }
+
+.forum-bg {
+  background: linear-gradient(#900, #4c0000); }
 
 .flex-forum {
   display: flex;
@@ -80,3 +106,14 @@ body {
   margin-left: 20px;
   background-color: #5f6c7a;
   color: #fff; }
+
+.p-body button:hover {
+  color: #900;
+  cursor: pointer;
+  border-color: #900; }
+
+.comment-box {
+  padding: 20px 5px;
+  border: 2px solid #000;
+  font-size: 15px;
+  font-family: "Electrolize", sans-serif; }
