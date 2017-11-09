@@ -1,7 +1,6 @@
 @import url("https://fonts.googleapis.com/css?family=Orbitron:b|Aldrich|Electrolize");
 body {
-  margin: 0;
-  background: linear-gradient(#900, #4c0000); }
+  margin: 0; }
 
 input[type="file"] {
   color: transparent; }
@@ -33,8 +32,13 @@ input[type="file"] {
     min-width: 100%;
     position: absolute; }
 
-.profile-body {
-  margin-bottom: 50px; }
+#filter {
+  margin-top: 0;
+  padding-top: 20px; }
+
+.profile-bg {
+  background: linear-gradient(#900, #4c0000);
+  padding-bottom: 50px; }
 
 .flex-personal {
   display: flex;

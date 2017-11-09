@@ -161,7 +161,7 @@ class ForumsFrame extends Component {
     }
 
     return (
-      <div>
+      <div className="forum-bg">
         <div id="forum-splash">
           <h1>GitRektHub</h1>
         </div>
