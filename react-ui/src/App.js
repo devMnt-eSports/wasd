@@ -1,6 +1,7 @@
 import React, { Component } from "react"
 import { HashRouter as Router, Route, Switch } from "react-router-dom"
 import "./App.css"
+import './react-css/react-css/App.css'
 
 import HeaderFrame from "./components/Header/HeaderFrame";
 import HomeFrame from "./components/Home/HomeFrame";
@@ -11,6 +12,7 @@ class App extends Component {
   render() {
     return (
       <div className="App">
+      <div id="frame">
         <HeaderFrame />
         <Router>
           <Switch>
@@ -22,6 +24,7 @@ class App extends Component {
             <Route path="/profile" component={ProfileFrame} />
           </Switch>
         </Router>
+      </div>
       </div>
     );
   }

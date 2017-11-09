@@ -1,0 +1,18 @@
+#gamingNews{
+	width:60vw;
+	font-family: 'Exo', sans-serif;
+	a{color:inherit;text-decoration:none;}
+	h2,h4,p{margin:0;}
+	h2{font-size:2.5rem;}
+	h4{font-size:1.5rem;
+		small{font-weight:400;font-size:1.25rem;}
+	}
+}
+.gamingArticle{
+	width:100%;
+	padding:20px;
+	text-align:center;
+	.gamingNewsImage{width:100%;}
+}
+.headerLine{color:red;}
+
