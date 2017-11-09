@@ -2,7 +2,6 @@
 
 body {
   margin: 0;
-  background: linear-gradient(#900, #4c0000);
 }
 
 input[type="file"] {
@@ -41,7 +40,8 @@ input[type="file"] {
 }
 
 .profile-body {
-  margin-bottom: 50px;
+  padding-bottom: 50px;
+  background: linear-gradient(#900, #4c0000);
 }
 
 .flex-personal {

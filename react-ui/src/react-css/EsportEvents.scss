@@ -1,0 +1,38 @@
+#EsportEvents{
+	font-family: 'Exo', sans-serif;
+	position:absolute;right:0;
+	width:40vw;
+	overflow:hidden;
+	h2{font-size:2.5rem;}
+	h2,p{margin:0;}
+	ul{list-style-type:none;margin:0;padding:0;
+		li{display:inline-block;}
+	}
+}
+.tabs__labels{display:flex;
+	.gameTab{
+		flex:1;
+		text-align:center;
+		a{text-decoration:none;}
+	}
+}
+.teams{
+	display:flex;
+	.teamDiv{
+		margin:2.5px;padding:2.5px;
+		flex:1;
+		display:inline-block;
+		background-color:white;
+		border:1px solid pink;
+		border-radius:10px;
+		text-align:center;
+		overflow:hidden;
+		img{width:50px;}
+		p{font-size:.7rem;}
+	}
+	.teamDiv:first-child{margin-left:5px;}
+	.teamDiv:last-child{margin-right:5px;}
+}
+.matches{
+	padding:5px;
+}

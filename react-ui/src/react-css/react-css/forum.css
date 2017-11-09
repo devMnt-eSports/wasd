@@ -1,7 +1,6 @@
 @import url("https://fonts.googleapis.com/css?family=Orbitron:b|Aldrich|Electrolize");
 body {
-  margin: 0;
-  background: linear-gradient(#900, #4c0000); }
+  margin: 0; }
 
 #profile-resizer {
   margin: 15px 30px 0 0;
@@ -77,6 +76,9 @@ body {
 #comment-content {
   margin: 0;
   padding-left: 5px; }
+
+.forum-bg {
+  background: linear-gradient(#900, #4c0000); }
 
 .flex-forum {
   display: flex;

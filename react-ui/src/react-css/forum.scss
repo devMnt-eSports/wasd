@@ -2,7 +2,6 @@
 
 body {
   margin: 0;
-  background: linear-gradient(#900, #4c0000);
 }
 
 #profile-resizer {
@@ -89,6 +88,10 @@ body {
 #comment-content {
   margin: 0;
   padding-left: 5px;
+}
+
+.forum-bg {
+  background: linear-gradient(#900, #4c0000);
 }
 
 .flex-forum {
