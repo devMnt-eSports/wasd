@@ -114,7 +114,7 @@ class ProfileFrame extends Component {
       });
     }
     return (
-      <div>
+      <div className="profile-body">
         <div className="profile-head">
           <div id="profile-back">
             <h1>My Profile</h1>
