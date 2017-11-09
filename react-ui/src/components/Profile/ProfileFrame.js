@@ -134,6 +134,7 @@ class ProfileFrame extends Component {
             <form onSubmit={event => this.uploadImage(event)}>
               <input
                 type="file"
+                className="custom-file-input"
                 onChange={event => this.submitImageUpload(event)}
               />
               <button type="submit" onClick={event => this.uploadImage(event)}>
