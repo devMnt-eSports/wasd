@@ -141,7 +141,7 @@ class ForumsFrame extends Component {
                   posted by <b>{e.user_name}</b>
                 </p>
                 <p id="forum-paragraph">{e.content}</p>
-                <CommentSection post={i} />
+                <CommentSection post={e.id} />
                 <input
                   id="comment-input"
                   type="text"
