@@ -185,6 +185,11 @@ app.post("/forums/post", (req, res, next) => {
     .catch(error => console.log(`Post Error: ${error}`));
 });
 
+app.get("/forums/comment/:forum_post", (req, res, next) => {
+    app.get("db").getCommentsByPost(req.params.forum_post).then(response){
+	res.send(response);
+    }
+}
 app.post("/forums/comment", (req, res, next) => {
   console.log(req.body);
   const db = app.get("db");
