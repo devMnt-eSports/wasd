@@ -1,27 +1,31 @@
 import React, { Component } from "react";
+import axios from "axios";
 
 class CommentSection extends Component {
   constructor(props) {
     super(props);
-
     this.state = {
-      comments: this.props.comments
+      comments: []
     };
   }
 
-  render() {
-    let commentSection = null;
-    if (this.state.comments) {
-      let commentArr = this.state.comments;
-
-      commentSection = commentArr.reverse().map((e, i) => {
-        <div key={i}>
-          <p>{e.post_user}</p>
-          <p>{e.comment_content}</p>
-        </div>;
-      });
+    componentDidMount(){
+	return axios.get(`/forums/comments/${this.props.post}`).then(results => {
+	    this.setState({comments: results.data});
+	})
     }
-    return <div>{commentSection}</div>;
+    
+  render() {
+      return (
+	  this.state.comments.reverse().map((e,i) => {
+	      return(
+		  <div key={i}>
+		  <p>{e.post_user}</p>
+		  <p>{e.comment_content}</p>
+		      </div>
+	      )
+	  })
+      )
   }
 }
 
