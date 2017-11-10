@@ -39,7 +39,7 @@ input[type="file"] {
 
 .profile-bg {
   background: linear-gradient(#900, #4c0000);
-  padding-bottom: 50px; }
+  padding: 50px 0px; }
 
 .flex-personal {
   display: flex;
