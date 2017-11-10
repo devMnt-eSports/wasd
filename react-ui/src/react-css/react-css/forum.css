@@ -104,7 +104,17 @@ body {
   font-size: 10pt; }
 
 #comment-input {
-  width: 500px; }
+  width: 500px;
+  padding: 8px;
+  font-size: 12px;
+  background-color: #e5e5e5;
+  border: 2px solid #000;
+  color: #000;
+  font-family: "Electrolize", sans-serif; }
+
+#comment-input::placeholder {
+  color: #000;
+  font-family: "Electrolize", sans-serif; }
 
 #posted-by {
   font-family: "Electrolize", sans-serif;
