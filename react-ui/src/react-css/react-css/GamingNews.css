@@ -16,10 +16,16 @@
 
 .gamingArticle {
   width: 100%;
-  padding: 20px;
+  padding: 30px;
   text-align: center; }
+  .gamingArticle .article {
+    border-bottom: 1px solid black;
+    padding: 20px 0;
+    background-color: rgba(255, 255, 255, 0.8); }
+  .gamingArticle .article:last-child {
+    border: none; }
   .gamingArticle .gamingNewsImage {
-    width: 100%; }
+    width: 80%; }
 
 .headerLine {
   color: red; }

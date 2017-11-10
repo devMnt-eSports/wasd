@@ -13,7 +13,7 @@ class HeaderFrame extends Component{
 			<div id="HeaderFrame">
 				<div className="wasd_div">
 					<Router><Link to={'/'}><img src={wasdlogo} alt={'wasd logo'} /></Link></Router>
-					<p>World Action Sports Database</p>
+					<p>World Action<br />Sports Database</p>
 				</div>
 
 				<div className="headerLogin">

@@ -146,13 +146,11 @@ app.get("/forums", (req, res, next) => {
       user = response[0];
     })
     .then(() => {
-      db
-        .getForumPosts()
-        .then(response => {
-          //console.log(response);
-            posts = response;
-	    res.send({posts, user})
-        })
+      db.getForumPosts().then(response => {
+        //console.log(response);
+        posts = response;
+        res.send({ posts, user });
+      });
     });
 });
 
@@ -174,11 +172,14 @@ app.post("/forums/post", (req, res, next) => {
 });
 
 app.get("/forums/comments/:forum_post", (req, res, next) => {
-    app.get("db").getCommentsByPost(req.params.forum_post).then((response) => {
-	res.send(response);
-    })
-})
-	
+  app
+    .get("db")
+    .getCommentsByPost(req.params.forum_post)
+    .then(response => {
+      res.send(response);
+    });
+});
+
 app.post("/forums/comment", (req, res, next) => {
   console.log(req.body);
   const db = app.get("db");
@@ -186,8 +187,8 @@ app.post("/forums/comment", (req, res, next) => {
     .postComment([
       req.body.user,
       req.body.content,
-	req.body.user_profile_pic,
-	req.body.forum_id
+      req.body.user_profile_pic,
+      req.body.forum_id
     ])
     .then(response => res.json(response))
     .catch(error => console.log(`Comment Error: ${error}`));
@@ -215,6 +216,16 @@ app.post("/profile/picture", (req, res, next) => {
     .postProfilePic([req.body.url, req.user.id])
     .then(response => res.json(response))
     .catch(error => console.log(`Error: ${error}`));
+});
+
+app.delete("/profile/delete/:username/:id", (req, res, next) => {
+  const db = app.get("db");
+  console.log(req.params.id);
+  console.log(req.params.username);
+  db
+    .deleteForumPost([req.params.id, req.params.username])
+    .then(response => res.json(response))
+    .catch(error => console.log(`DELETE ERR: ${error}`));
 });
 
 //app.get("*", (req, res) => {

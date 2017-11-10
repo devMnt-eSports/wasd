@@ -31,9 +31,9 @@ class GamingNews extends Component {
 				<div className="gamingArticle">
 				{
 					this.state.news.articles.map( (article, i)=>{
-						return <div key={i}>
+						return <div className="article" key={i}>
 							<h4><a href={article.url} target="_blank">{article.title}</a> <span className="headerLine">|</span> <small>{article.author}</small></h4>
-							<p>{article.publishedAt}</p>
+							<p><small>{article.publishedAt}</small></p>
 							<img src={article.urlToImage} alt={'img'} className="gamingNewsImage" />
 						</div>
 					})
