@@ -14,6 +14,8 @@ class ForumsFrame extends Component {
       posts: [],
       file: "",
       imagePreviewUrl: "",
+      fire: false,
+      clickedTitle: [],
       user: {
         name: "",
         id: 0,
@@ -112,6 +114,12 @@ class ForumsFrame extends Component {
     this.setState({ comment: { content: event.target.value } });
   }
 
+  straightFire(clickedId) {
+    console.log(`This post is stright FIRE`);
+    const currentState = this.state.fire;
+    this.setState({ fire: !currentState, clickedTitle: clickedId });
+  }
+
   componentDidMount() {
     return axios.get("/forums").then(response => {
       this.setState({
@@ -136,9 +144,15 @@ class ForumsFrame extends Component {
             <div className="flex-forum" key={i}>
               <div className="center-forum">
                 <div className="flex-post">
-                  <h1>
-                    <b>{e.title}</b>
-                  </h1>
+                  {this.state.fire && this.state.clickedTitle == e.id ? (
+                    <h1 className="font-effect-fire-animation">
+                      <b>{e.title}</b>
+                    </h1>
+                  ) : (
+                    <h1>
+                      <b>{e.title}</b>
+                    </h1>
+                  )}
                   <div id="profile-resizer">
                     <img
                       src={
@@ -163,8 +177,9 @@ class ForumsFrame extends Component {
                   <button onClick={event => this.postComment(event, e.id)}>
                     Comment
                   </button>
-                  <button>Upvote</button>
-                  <button>Report</button>
+                  <button onClick={() => this.straightFire(e.id)}>
+                    This Post is FIRE
+                  </button>
                 </div>
               </div>
             </div>
@@ -223,10 +238,15 @@ class ForumsFrame extends Component {
                 placeholder="Write your post..."
                 onChange={e => this.handleContentChange(e)}
               />
-              <button type="submit" onClick={event => this.postToForum(event)}>
-                Submit My Post!
-              </button>
             </div>
+            <button
+              id="post-writer-submit"
+              type="submit"
+              placeholder="Submit My Post!"
+              onClick={event => this.postToForum(event)}
+            >
+              <b>Submit My Post!</b>
+            </button>
           </div>
         </div>
         <div>{forumPost}</div>

@@ -1,4 +1,4 @@
-@import url("https://fonts.googleapis.com/css?family=Orbitron:b|Aldrich|Electrolize");
+@import url("https://fonts.googleapis.com/css?family=Orbitron:b|Aldrich|Aldrich&effect=fire-animation|Electrolize");
 
 body {
   margin: 0;
@@ -30,6 +30,7 @@ body {
   background-position: 50% 50%;
   text-align: center;
   padding: 100px;
+  margin-bottom: 20px;
   border-bottom: 2px solid #000;
   h1 {
     margin: 0 auto;
@@ -107,6 +108,17 @@ body {
   font-family: "Electrolize", sans-serif;
 }
 
+#post-writer-submit {
+  margin-top: 20px;
+  width: 130px;
+  color: #000;
+  background: -webkit-linear-gradient(top, #5f6c7a, #9fabb7);
+  border: 1px solid #000;
+  border-radius: 3px;
+  font-weight: 700;
+  font-size: 10pt;
+}
+
 #comment-input {
   width: 500px;
 }
@@ -121,9 +133,10 @@ body {
 }
 
 #forum-paragraph {
+  background: #9fabb7;
   border: 2px solid #000;
   padding: 20px 5px 20px 5px;
-  font-size: 17px;
+  font-size: 18px;
   font-family: "Electrolize", sans-serif;
   line-height: 1.5;
 }
@@ -151,7 +164,7 @@ body {
 
 #comment-content {
   margin: 0;
-  padding-left: 5px;
+  padding-left: 10px;
 }
 
 .forum-bg {

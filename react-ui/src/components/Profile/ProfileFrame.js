@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import { fire as firebase } from "../../fire";
-import FilterOptions from "./ProfileFilterOptions/ProfileFilterOptions.js";
 import CommentSection from "../Forums/ForumsComments.js";
 
 import axios from "axios";
@@ -15,6 +14,8 @@ class ProfileFrame extends Component {
       posts: [],
       file: "",
       imagePreviewUrl: "",
+      fire: false,
+      clickedTitle: [],
       user: {
         name: "",
         id: 0,
@@ -61,6 +62,16 @@ class ProfileFrame extends Component {
     );
   }
 
+  handleCommentChange(event) {
+    this.setState({ comment: { content: event.target.value } });
+  }
+
+  straightFire(clickedId) {
+    console.log(`This post is stright FIRE`);
+    const currentState = this.state.fire;
+    this.setState({ fire: !currentState, clickedTitle: clickedId });
+  }
+
   async componentDidMount() {
     const profileRequest = await axios.get(`/profile`);
     const postsRequest = await axios.get(`/profile/personal-posts`);
@@ -85,7 +96,11 @@ class ProfileFrame extends Component {
             <div className="flex-personal" key={i}>
               <div className="center-personal">
                 <div className="flex-my-posts">
-                  <h1> {e.title} </h1>
+                  {this.state.fire && this.state.clickedTitle == e.id ? (
+                    <h1 className="font-effect-fire-animation">{e.title}</h1>
+                  ) : (
+                    <h1>{e.title}</h1>
+                  )}
                   <div id="personal-resizer">
                     <img
                       src={
@@ -95,11 +110,11 @@ class ProfileFrame extends Component {
                     />
                   </div>
                 </div>
-                <div>
-                  <p>
+                <div className="p-body">
+                  <p id="posted-by">
                     posted by <b>{e.user_name}</b>
                   </p>
-                  <p>{e.content}</p>
+                  <p id="forum-paragraph">{e.content}</p>
                   <CommentSection post={e.id} />
                   <input
                     id="comment-input"
@@ -110,8 +125,9 @@ class ProfileFrame extends Component {
                   <button onClick={event => this.postComment(event)}>
                     Comment
                   </button>
-                  <button>Upvote</button>
-                  <button>Report</button>
+                  <button onClick={() => this.straightFire(e.id)}>
+                    This Post Is FIRE
+                  </button>
                 </div>
               </div>
             </div>
@@ -124,13 +140,13 @@ class ProfileFrame extends Component {
           <div id="profile-back">
             <h1>My Profile</h1>
             <h3>
-              Welcome, <b>{this.state.user.name || "current user"}</b>!
+              Welcome, <br /> <b>{this.state.user.name || "current user"}</b>!
             </h3>
-            <div id="personal-resizer">
+            <div id="personal-profile">
               <img
                 src={
-                  this.state.user.user_profile_pic ||
                   this.state.imagePreviewUrl ||
+                  this.state.user.user_profile_pic ||
                   "https://vignette.wikia.nocookie.net/jamesbond/images/6/61/Generic_Placeholder_-_Profile.jpg/revision/latest?cb=20121227201208"
                 }
                 alt={this.state.user.name}
@@ -148,11 +164,7 @@ class ProfileFrame extends Component {
             </form>
           </div>
         </div>
-        <div className="profile-bg">
-          <p id="filter">Filter By:</p>
-          <FilterOptions update={this.updateFilter} />
-          {myPosts}
-        </div>
+        <div className="profile-bg">{myPosts}</div>
       </div>
     );
   }
