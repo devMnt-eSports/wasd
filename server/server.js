@@ -221,8 +221,9 @@ app.post("/profile/picture", (req, res, next) => {
 app.delete("/profile/delete/:username/:id", (req, res, next) => {
   const db = app.get("db");
   console.log(req.params.id);
+  console.log(req.params.username);
   db
-    .deleteForumPost([req.params.id], [req.params.username])
+    .deleteForumPost([req.params.id, req.params.username])
     .then(response => res.json(response))
     .catch(error => console.log(`DELETE ERR: ${error}`));
 });
