@@ -1,17 +1,20 @@
 #HeaderFrame{
 	width:100%;position:relative;
 	padding:1rem;
-
+	background:ghostwhite;
 	font-family: 'Share Tech Mono', monospace;
-
-	/*background-color: pink;*/
-	border-bottom:1px solid silver;
+	text-align:center;
 	h3, h4, p{margin:0;}
 }
 
 .wasd_div{
 	display:inline-block;
 	img{height:85px;}
+	background:white;
+	border:2px solid dodgerblue;
+	border-radius:10px;
+	padding:10px;
+	text-align:center;
 }
 
 .navGamesDiv{text-align:center;padding:10px 0;}

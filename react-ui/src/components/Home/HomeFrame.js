@@ -1,17 +1,11 @@
 import React, { Component } from 'react'
 import { HashRouter as Router, Route, Switch, Link } from "react-router-dom"
-
 import axios from "axios";
 import "../../react-css/react-css/profile.css";
 import "../../react-css/react-css/HomeFrame.css";
-
 import GamingNews from './GamingNews/GamingNews'
 import EsportEvents from './EsportEvents/EsportEvents'
-
-import '../../styles/Home/HomeFrame.css'
-
 class HomeFrame extends Component{
-
 	componentDidMount() {
 	  return axios.get(`/`).then(results => {
 	    console.log(results.data);
@@ -20,26 +14,19 @@ class HomeFrame extends Component{
 	    });
 	  });
 	}
-
 	render(){
-
 		return(
 			<div id="HomeFrame">
-
-				<EsportEvents/>				
-
+				<EsportEvents/>
 				<GamingNews />
-
 				<div id="socialMediaSection">
 					<div id="tweets">
 						section for tweets
 					</div>
-
 					<div id="twitch">
 						section for twitch
 					</div>
 				</div>
-
 			</div>
 		)
 	}
