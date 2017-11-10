@@ -128,7 +128,6 @@ class ProfileFrame extends Component {
                   <button onClick={() => this.straightFire(e.id)}>
                     This Post Is FIRE
                   </button>
-                  <button>Report</button>
                 </div>
               </div>
             </div>
@@ -141,9 +140,9 @@ class ProfileFrame extends Component {
           <div id="profile-back">
             <h1>My Profile</h1>
             <h3>
-              Welcome, <b>{this.state.user.name || "current user"}</b>!
+              Welcome, <br /> <b>{this.state.user.name || "current user"}</b>!
             </h3>
-            <div id="personal-resizer">
+            <div id="personal-profile">
               <img
                 src={
                   this.state.imagePreviewUrl ||

@@ -180,7 +180,6 @@ class ForumsFrame extends Component {
                   <button onClick={() => this.straightFire(e.id)}>
                     This Post is FIRE
                   </button>
-                  <button>Report</button>
                 </div>
               </div>
             </div>

@@ -17,6 +17,9 @@ input[type="file"] {
   div {
     margin: 10px auto;
   }
+  h3 {
+    margin-bottom: 30px;
+  }
 }
 
 #personal-resizer {
@@ -28,6 +31,26 @@ input[type="file"] {
   position: relative;
   img {
     max-height: 150px;
+    max-width: auto;
+    left: -1000%;
+    right: -1000%;
+    top: -1000%;
+    bottom: -1000%;
+    margin: auto;
+    min-height: 100%;
+    min-width: 100%;
+    position: absolute;
+  }
+}
+
+#personal-profile {
+  height: 150px;
+  width: 150px;
+  overflow: hidden;
+  border: 2px solid #000;
+  position: relative;
+  img {
+    max-height: 205px;
     max-width: auto;
     left: -1000%;
     right: -1000%;
@@ -91,6 +114,7 @@ input[type="file"] {
   }
   form {
     padding-bottom: 20px;
+    margin-top: 30px;
   }
 }
 

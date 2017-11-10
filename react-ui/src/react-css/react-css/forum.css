@@ -26,6 +26,7 @@ body {
   background-position: 50% 50%;
   text-align: center;
   padding: 100px;
+  margin-bottom: 20px;
   border-bottom: 2px solid #000; }
   #forum-splash h1 {
     margin: 0 auto;
@@ -113,6 +114,7 @@ body {
     font-size: 16px; }
 
 #forum-paragraph {
+  background: #9fabb7;
   border: 2px solid #000;
   padding: 20px 5px 20px 5px;
   font-size: 18px;
