@@ -20,9 +20,15 @@ class ProfileFrame extends Component {
         name: "",
         id: 0,
         user_profile_pic: ""
+      },
+      comment: {
+        content: "",
+        title: ""
       }
     };
+
     this.uploadImage = this.uploadImage.bind(this);
+    this.handleCommentChange = this.handleCommentChange.bind(this);
   }
 
   submitImageUpload(event) {
@@ -60,6 +66,37 @@ class ProfileFrame extends Component {
         return axios.post(`/profile/picture`, { url: downloadURL, id: userId });
       }
     );
+  }
+
+  postComment(event, n) {
+    event.preventDefault();
+    return axios
+      .post(`/forums/comment`, {
+        title: this.state.comment.title,
+        content: this.state.comment.content,
+        user: this.state.user.name,
+        user_profile_pic: this.state.user.user_profile_pic,
+        forum_id: n
+      })
+      .then(response => {
+        axios.get("/profile/personal-posts").then(res => {
+          this.setState({
+            posts: res.data.reverse()
+          });
+          console.log(this);
+          this.forceUpdate();
+        });
+      });
+  }
+
+  deletePost(id, username) {
+    return axios
+      .delete(`/profile/delete/${username}/${id}`, {})
+      .then(response => {
+        this.setState({
+          posts: response.data.reverse()
+        });
+      });
   }
 
   handleCommentChange(event) {
@@ -122,11 +159,14 @@ class ProfileFrame extends Component {
                     placeholder="Leave comment..."
                     onChange={e => this.handleCommentChange(e)}
                   />
-                  <button onClick={event => this.postComment(event)}>
+                  <button onClick={event => this.postComment(event, e.id)}>
                     Comment
                   </button>
                   <button onClick={() => this.straightFire(e.id)}>
                     This Post Is FIRE
+                  </button>
+                  <button onClick={() => this.deletePost(e.id, e.user_name)}>
+                    Delete
                   </button>
                 </div>
               </div>
