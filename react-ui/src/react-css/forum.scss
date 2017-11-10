@@ -217,8 +217,12 @@ body {
 .p-body {
   button {
     margin-left: 20px;
-    background-color: #5f6c7a;
-    color: #fff;
+    background: linear-gradient(#5f6c7a, #9fabb7);
+    border: 2px solid #000;
+    border-radius: 3px;
+    color: #000;
+    font-weight: 700;
+    font-size: 9pt;
   }
   button:hover {
     color: #900;
