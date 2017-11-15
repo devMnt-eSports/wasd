@@ -1,11 +1,5 @@
 import React, { Component } from 'react'
 import { HashRouter as Router, Link } from 'react-router-dom'
-
-// import ProfileFrame from '../../Profile/ProfileFrame'
-
-// import '../../styles/Header/NavBar/NavBarFrame.css';
-
-
 class NavBarFrame extends Component{
 	render(){
 		return(
@@ -20,5 +14,4 @@ class NavBarFrame extends Component{
 		)
 	}
 }
-
 export default NavBarFrame
