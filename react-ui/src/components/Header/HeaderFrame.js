@@ -18,7 +18,7 @@ class HeaderFrame extends Component{
 
 				<div className="headerLogin">
 					<h4>Sign Up</h4>
-					<p>login with <a href="http://localhost:5000/auth/twitch"><strong>TWITCH</strong></a> or <a href="http://localhost:5000/auth/steam"><strong>STEAM</strong></a></p>
+					<p>login with <a href="http://wasd.link/auth/twitch"><strong>TWITCH</strong></a> or <a href="http://wasd.link/auth/steam"><strong>STEAM</strong></a></p>
 				</div>
 
 				<NavBarFrame />
