@@ -19,14 +19,7 @@ class HomeFrame extends Component{
 			<div id="HomeFrame">
 				<EsportEvents/>
 				<GamingNews />
-				<div id="socialMediaSection">
-					<div id="tweets">
-						section for tweets
-					</div>
-					<div id="twitch">
-						section for twitch
-					</div>
-				</div>
+				
 			</div>
 		)
 	}
