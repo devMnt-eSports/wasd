@@ -1,9 +1,12 @@
 #HeaderFrame{
 	width:100%;position:relative;
 	padding:1rem;
-	background:ghostwhite;
+	background:url(../../assets/bgbg.jpeg);
+	background-size:cover;
+	background-position:center;
 	font-family: 'Share Tech Mono', monospace;
 	text-align:center;
+	color:white;
 	h3, h4, p{margin:0;}
 }
 
@@ -15,6 +18,7 @@
 	border-radius:10px;
 	padding:10px;
 	text-align:center;
+	color:black;
 }
 
 .navGamesDiv{text-align:center;padding:10px 0;}
@@ -24,8 +28,9 @@
 .headerLogin{
 	position:absolute;top:1rem;right:1rem;text-align:right;
 	h4, p{cursor:pointer;}
-	h4{font-size:1.5rem;letter-spacing:-.1rem}
-	p{letter-spacing:-.1rem;}
+	h4{font-size:1.5rem;letter-spacing:-.1rem;padding-bottom:.5rem;}
+	p{letter-spacing:-.1rem;font-size:1.25rem;}
+	strong{background:rgba(240,240,240,.7);padding:.25rem .5rem;border-radius:10px;}
 }
 
 #NavBarFrame{
@@ -34,5 +39,5 @@
 	ul{margin:0;padding:0;list-style-type:none;}
 	li{display:inline-block;}
 	li:first-child{padding-right:1rem;}
-	h3{font-size:1.5rem;}
+	h3{font-size:2.5rem;color:rgba(5,5,5,.7);padding:0 1.5rem;color:ghostwhite;}
 }

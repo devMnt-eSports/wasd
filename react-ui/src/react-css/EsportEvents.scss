@@ -16,11 +16,10 @@
 		a{text-decoration:none;}
 	}
 }
-.teams{
-	display:flex;
+
 	.teamDiv{
+		width:120px;height:97px;
 		margin:2.5px;padding:2.5px;
-		flex:1;
 		display:inline-block;
 		background-color:white;
 		border:1px solid pink;
@@ -32,7 +31,11 @@
 	}
 	.teamDiv:first-child{margin-left:5px;}
 	.teamDiv:last-child{margin-right:5px;}
-}
+
 .matches{
 	padding:5px;
+}
+
+#OwEvents{
+	img{width:600px;}
 }

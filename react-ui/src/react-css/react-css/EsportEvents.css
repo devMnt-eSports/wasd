@@ -23,26 +23,30 @@
     .tabs__labels .gameTab a {
       text-decoration: none; }
 
-.teams {
-  display: flex; }
-  .teams .teamDiv {
-    margin: 2.5px;
-    padding: 2.5px;
-    flex: 1;
-    display: inline-block;
-    background-color: white;
-    border: 1px solid pink;
-    border-radius: 10px;
-    text-align: center;
-    overflow: hidden; }
-    .teams .teamDiv img {
-      width: 50px; }
-    .teams .teamDiv p {
-      font-size: .7rem; }
-  .teams .teamDiv:first-child {
-    margin-left: 5px; }
-  .teams .teamDiv:last-child {
-    margin-right: 5px; }
+.teamDiv {
+  width: 120px;
+  height: 97px;
+  margin: 2.5px;
+  padding: 2.5px;
+  display: inline-block;
+  background-color: white;
+  border: 1px solid pink;
+  border-radius: 10px;
+  text-align: center;
+  overflow: hidden; }
+  .teamDiv img {
+    width: 50px; }
+  .teamDiv p {
+    font-size: .7rem; }
+
+.teamDiv:first-child {
+  margin-left: 5px; }
+
+.teamDiv:last-child {
+  margin-right: 5px; }
 
 .matches {
   padding: 5px; }
+
+#OwEvents img {
+  width: 600px; }
