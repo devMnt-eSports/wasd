@@ -15,6 +15,9 @@ class CommentSection extends Component {
       this.setState({ comments: results.data });
     });
   }
+  componentDidUpdate() {
+    console.log(`Something here`);
+  }
 
   render() {
     return this.state.comments.map((e, i) => {

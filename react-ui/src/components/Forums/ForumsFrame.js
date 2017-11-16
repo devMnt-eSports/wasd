@@ -56,12 +56,12 @@ class ForumsFrame extends Component {
     uploadTask.on(
       "state_changed",
       snapshot => {
-        console.log(snapshot);
+        // console.log(snapshot);
       },
       function(error) {},
       function() {
         let downloadURL = [uploadTask.snapshot.downloadURL];
-        console.log(downloadURL);
+        // console.log(downloadURL);
       }
     );
   }
@@ -96,7 +96,6 @@ class ForumsFrame extends Component {
             posts: res.data.posts.reverse(),
             user: res.data.user
           });
-          console.log(this);
           this.forceUpdate();
         });
       });
@@ -115,7 +114,6 @@ class ForumsFrame extends Component {
   }
 
   straightFire(clickedId) {
-    console.log(`This post is stright FIRE`);
     const currentState = this.state.fire;
     this.setState({ fire: !currentState, clickedTitle: clickedId });
   }
@@ -126,7 +124,6 @@ class ForumsFrame extends Component {
         posts: response.data.posts.reverse(),
         user: response.data.user
       });
-      console.log(this.state);
     });
   }
 
@@ -167,6 +164,7 @@ class ForumsFrame extends Component {
                     posted by <b>{e.user_name}</b>
                   </p>
                   <p id="forum-paragraph">{e.content}</p>
+                  <img src={e.media || null} />
                   <CommentSection post={e.id} />
                   <input
                     id="comment-input"
