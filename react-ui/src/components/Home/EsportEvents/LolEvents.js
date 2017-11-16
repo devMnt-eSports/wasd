@@ -38,13 +38,7 @@ class LolEvents extends Component{
 					})
 				}
 
-				{
-					this.state.lolMatches.map( (m, mi) => {
-						return <div key={mi}>
-							{m.name}
-						</div>
-					})
-				}
+				
 
 			</div>
 		)

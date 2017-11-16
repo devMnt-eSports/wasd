@@ -2,9 +2,12 @@
   width: 100%;
   position: relative;
   padding: 1rem;
-  background: ghostwhite;
+  background: url(https://i.pinimg.com/originals/da/fc/bd/dafcbd84467ca2b4e5365ca1a65475ad.jpg);
+  background-size: cover;
+  background-position: center;
   font-family: 'Share Tech Mono', monospace;
-  text-align: center; }
+  text-align: center;
+  color: white; }
   #HeaderFrame h3, #HeaderFrame h4, #HeaderFrame p {
     margin: 0; }
 
@@ -14,7 +17,8 @@
   border: 2px solid dodgerblue;
   border-radius: 10px;
   padding: 10px;
-  text-align: center; }
+  text-align: center;
+  color: black; }
   .wasd_div img {
     height: 85px; }
 
@@ -35,9 +39,15 @@
     cursor: pointer; }
   .headerLogin h4 {
     font-size: 1.5rem;
-    letter-spacing: -.1rem; }
+    letter-spacing: -.1rem;
+    padding-bottom: .5rem; }
   .headerLogin p {
-    letter-spacing: -.1rem; }
+    letter-spacing: -.1rem;
+    font-size: 1.25rem; }
+  .headerLogin strong {
+    background: rgba(240, 240, 240, 0.7);
+    padding: .25rem .5rem;
+    border-radius: 10px; }
 
 #NavBarFrame {
   padding-top: 1rem; }
@@ -53,4 +63,7 @@
   #NavBarFrame li:first-child {
     padding-right: 1rem; }
   #NavBarFrame h3 {
-    font-size: 1.5rem; }
+    font-size: 2.5rem;
+    color: rgba(5, 5, 5, 0.7);
+    padding: 0 1.5rem;
+    color: ghostwhite; }

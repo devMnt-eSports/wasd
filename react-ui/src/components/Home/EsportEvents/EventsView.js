@@ -3,6 +3,7 @@ import { HashRouter as Router, Route, Switch, Link } from "react-router-dom"
 
 import LolEvents from './LolEvents'
 import OwEvents from './OwEvents'
+import PubgEvents from './PubgEvents'
 
 import '../../../styles/Home/EsportEvents/EventsView.css'
 
@@ -13,7 +14,7 @@ class EventsView extends Component{
 		const tabs = [
 		{
 		  name: 'PUBGs',
-		  content: 'PUBG content'
+		  content: <PubgEvents />
 		},
 		{
 			name: 'League of Legends',
